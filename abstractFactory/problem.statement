@@ -1,0 +1,91 @@
+CS4015/SWE4403/CS6075 Design Pattern Assignment 2
+
+ 
+
+Due: Thu. 4:30pm, Feb. 7, 2019
+
+ 
+
+Design and implement two Java programs using Abstract Factory and Prototype design patterns. 
+
+  
+
+The program displays the elapsed time since it was started and the elapsed time from a user-defined chosen time (initially, the start of the program) in one of the following two formats:
+
+ 
+
+Format 1:
+
+Elapsed: HH:MM:SS
+
+User-defined: HH:MM:SS
+
+ 
+
+Format 2:
+
+Elapsed: MS
+
+User-defined: MS
+
+ 
+
+Where MS is the time in milliseconds.
+
+ 
+
+The following is how the programs work.
+
+For Abstract Factory, the program continuously asks the user to give one of the following commands, and performs the corresponding task. Note that the program gets the current time from the system clock.
+
+'t': display current time
+
+'r': reset elapsed time to 0 and display confirmation
+
+'1': change to display format 1
+
+'2': change to display format 2
+
+'q': quit the program.
+
+ 
+
+For Prototype, the program continuously asks the user to give one of the following commands, and performs the corresponding task. Note that the program gets the current date and time from the system clock.
+
+'t': display current time
+
+'r': reset elapsed time to 0 and display confirmation
+
+'1': change to display format 1 for elapsed time time display
+
+'2': change to display format 1 for user-defined elapsed time display
+
+'3': change to display format 2 for elapsed time display
+
+'4': change to display format 2 for user-defined elapsed time display
+
+'q': quit the program.
+
+ 
+
+In both programs, there should be 2 product hierarchies: “ElapsedTimeObject” and “UserDefinedTimeObject”, and 2 product families: format1 and format2. 
+In the Abstract Factory program, implement the abstract factory class “ElapsedTimeFactory” and its subclasses “ElapsedTimeFactoryV1” and “ElapsedTimeFactoryV2”.
+In the Prototype program, implement “ElapsedTimeObject” and “UserDefinedTimeObject” and their subclasses “ElapsedTimeObjectF1”, “ElapsedTimeObjectF2”, “UserDefinedTimeObjectF1” and “UserDefinedTimeObjectF2” as clone-able objects. 
+ 
+
+Required development process for each of the two programs:
+
+(Lab) In Rational Software Architect tool, create a modeling project with name “DP4015DP2ModelAF” or “CS4015DP2ModelPT” with a class UML diagram with name “AbstractFactory” or “Prototype”.
+(Lab) In the class diagram, design classes and their relationships with as much as detail as possible.
+(Lab) Generate Java code from the design classes in (2) into a Java project with name “DP4015DP2JavaAF” or “CS4015DP2JavaPT”.
+(Individual) Complete the program by writing code for each method of each generated class.
+(Individual) Test your program.
+Submission:
+
+Export the “CS4015DP2ModelAF”, “CS4015DP2JavaAF”, “CS4015DP2ModelPT”, and “CS4015DP2Java” packages to a single zip file with name “CS4015DP2.zip”. 
+Submit the zip file to the designated folder in the course D2L.
+ 
+
+Due Date
+Feb 7, 2019 4:30 PM
+
