@@ -1,7 +1,17 @@
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
+
+/*
+'t': display current time
+'r': reset elapsed time to 0 and display confirmation
+'1': change to display format 1
+'2': change to display format 2
+'q': quit the program.
+ */
+
 
 public class client {
 
@@ -9,22 +19,32 @@ public class client {
 		long millis = System.currentTimeMillis();
 		
 		while(true) {
-			System.out.print("Enter choice"
-				+ "\n 1: HH:MM:SS / 2: MS / 3: Quit >");
-			Scanner in = new Scanner(System.in);
-			int num = in.nextInt();
-			timeFactory elapsedTime = null;
-			switch(num) {
-			case 1:
-				elapsedTime = new hmsFactory();
-			    break;
-			case 2:
-				elapsedTime = new milliSecondFactory();				
-			    break;
-			case 3:
-				return;
+			char c;
+			//Scanner in = new Scanner(System.in);
+			try {
+				c = (char) System.in.read();
+				switch(c) {
+				case 't':
+					System.out.println("Current time");
+				    break;
+				case 'r':
+					System.out.println("Reset elapsed time");
+				    break;
+				case '1':
+					System.out.println("Format 1");
+					break;
+				case '2':
+					System.out.println("Format 2");
+					break;
+				case 'q':
+					System.out.println("Quiting");
+					return;
+				}
+
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
-		    System.out.println(elapsedTime.getTime());	
 		}
 	}
 }
