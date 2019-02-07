@@ -1,10 +1,9 @@
 
 public class ElapsedTimeObjectFormat2 implements ElapsedTimeObject {
-	Long elapsedTime;
+//	Long elapsedTime;
 	String formatedTime;
-	public ElapsedTimeObjectFormat2(Long time) {
+	public ElapsedTimeObjectFormat2(Long elapsedTime) {
 		// TODO Auto-generated constructor stub
-		elapsedTime = time;
 		formatedTime = Long.toString(elapsedTime);
 	}
 

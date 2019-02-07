@@ -1,9 +1,10 @@
 
-public interface ElapsedTimeFactory {
-	static long programStart = System.currentTimeMillis();
-	static long userStart = programStart;
+public abstract class ElapsedTimeFactory {
+	protected static long programStart = System.currentTimeMillis();
+	protected static long userStart;
 	
-	ElapsedTimeObject getElapsedTimeObject();	
-	UserDefinedTimeObject getUserDefinedTimeObject();
-	String getCurTime();
+	abstract ElapsedTimeObject getElapsedTimeObject();	
+	abstract UserDefinedTimeObject getUserDefinedTimeObject();
+	abstract void resetUserTime();
+//	abstract String getCurTime();
 }

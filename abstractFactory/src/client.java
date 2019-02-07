@@ -17,31 +17,41 @@ public class client {
 
 	public static void main(String[] args) {
 		long millis = System.currentTimeMillis();
-		ElapsedTimeFactory eFactory = null;		
+		ElapsedTimeFactory factory   = null;
+		ElapsedTimeFactory factoryV1 = new ElapsedTimeFactoryV1();;
+		ElapsedTimeFactory factoryV2 = new ElapsedTimeFactoryV2();;
+		factory = factoryV1;
+		
 		ElapsedTimeObject eTime = null;
 		UserDefinedTimeObject uTime = null;
-		
+		char c;
+
 		while(true) {
-			char c;
-			//Scanner in = new Scanner(System.in);
 			try {
 				c = (char) System.in.read();
 				switch(c) {
 				case 't':
-					System.out.println("Current time");
-				    break;
+//					System.out.println("Current time "+ factory.getCurTime());
+					eTime = factory.getElapsedTimeObject();
+					uTime = factory.getUserDefinedTimeObject();
+					System.out.println("Elapsed program time " + eTime.getTime());
+					System.out.println("Elapsed user time    " + uTime.getTime());
+					System.out.println();
+					break;
 				case 'r':
-					System.out.println("Reset elapsed time");
+					System.out.println("User elapsed time is reset");
+					System.out.println();
+					factory.resetUserTime();
 				    break;
 				case '1':
-					eFactory = new ElapsedTimeFactoryV1();
-					eTime = eFactory.getElapsedTimeObject();
-					System.out.println(eTime.getTime());
+					factory = factoryV1;
+					System.out.println("Format changed to HH:MM:SS");
+					System.out.println();
 					break;
 				case '2':
-					eFactory = new ElapsedTimeFactoryV2();
-					uTime = eFactory.getUserDefinedTimeObject();
-					System.out.println(eTime.getTime());
+					factory = factoryV2;
+					System.out.println("Format changed to milli seconds");
+					System.out.println();
 					break;
 				case 'q':
 					System.out.println("Quiting");
@@ -49,7 +59,6 @@ public class client {
 				}
 
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}

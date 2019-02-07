@@ -1,16 +1,18 @@
 import java.util.concurrent.TimeUnit;
 
-public class ElapsedTimeFactoryV1 implements ElapsedTimeFactory {
-
+public class ElapsedTimeFactoryV1 extends ElapsedTimeFactory {
 	Long elapsedTime;
+	Long elapsedUserTime;
 	public ElapsedTimeFactoryV1() {
 		// TODO Auto-generated constructor stub
-		elapsedTime = System.currentTimeMillis() - programStart;
+		userStart = programStart;
 	}
-
+	
 	@Override
 	public ElapsedTimeObject getElapsedTimeObject() {
 		// TODO Auto-generated method stub
+		elapsedTime = System.currentTimeMillis() - programStart;
+		
 		ElapsedTimeObject time = new ElapsedTimeObjectFormat1(elapsedTime);
         return time;
 	}
@@ -18,12 +20,22 @@ public class ElapsedTimeFactoryV1 implements ElapsedTimeFactory {
 	@Override
 	public UserDefinedTimeObject getUserDefinedTimeObject() {
 		// TODO Auto-generated method stub
-		return null;
+		elapsedUserTime = System.currentTimeMillis() - userStart;
+		UserDefinedTimeObject time = new UserDefinedTimeObjectFormat1(elapsedUserTime);
+        return time;
 	}
 
+//	@Override
+//	public String getCurTime() {
+//		Long curTime = System.currentTimeMillis();
+//	    return String.format("%02d:%02d:%02d", TimeUnit.MILLISECONDS.toHours(curTime),
+//	            TimeUnit.MILLISECONDS.toMinutes(curTime) - TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(curTime)),
+//	            TimeUnit.MILLISECONDS.toSeconds(curTime) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(curTime)));
+//	}
+
 	@Override
-	public String getCurTime() {
+	public void resetUserTime() {
 		// TODO Auto-generated method stub
-		return null;
+		userStart = System.currentTimeMillis();
 	}
 }

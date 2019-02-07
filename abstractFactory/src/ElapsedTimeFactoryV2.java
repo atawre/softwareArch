@@ -1,26 +1,35 @@
 
-public class ElapsedTimeFactoryV2 implements ElapsedTimeFactory{
+public class ElapsedTimeFactoryV2 extends ElapsedTimeFactory{
+	Long elapsedTime;
+	Long elapsedUserTime;
 
 	public ElapsedTimeFactoryV2() {
-		// TODO Auto-generated constructor stub
+		userStart = programStart;
 	}
 
 	@Override
 	public ElapsedTimeObject getElapsedTimeObject() {
-		// TODO Auto-generated method stub
-		return null;
+		elapsedTime = System.currentTimeMillis() - programStart;
+		ElapsedTimeObject time = new ElapsedTimeObjectFormat2(elapsedTime);
+		return time;
 	}
 
 	@Override
 	public UserDefinedTimeObject getUserDefinedTimeObject() {
-		// TODO Auto-generated method stub
-		return null;
+		elapsedUserTime = System.currentTimeMillis() - userStart;
+		UserDefinedTimeObject time = new UserDefinedTimeObjectFormat2(elapsedUserTime);
+		return time;
 	}
+
+//	@Override
+//	public String getCurTime() {
+//		return Long.toString(System.currentTimeMillis());
+//	}
 
 	@Override
-	public String getCurTime() {
+	public void resetUserTime() {
 		// TODO Auto-generated method stub
-		return null;
+		userStart = System.currentTimeMillis();
 	}
-
 }
+
