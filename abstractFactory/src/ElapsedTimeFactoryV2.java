@@ -6,13 +6,19 @@ public class ElapsedTimeFactoryV2 implements ElapsedTimeFactory{
 	}
 
 	@Override
-	public ElapsedTimeObject getElapsedTime() {
+	public ElapsedTimeObject getElapsedTimeObject() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public UserDefinedTimeObject getUserDefinedTime() {
+	public UserDefinedTimeObject getUserDefinedTimeObject() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getCurTime() {
 		// TODO Auto-generated method stub
 		return null;
 	}

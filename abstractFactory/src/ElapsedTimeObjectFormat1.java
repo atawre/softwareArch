@@ -1,23 +1,25 @@
+import java.util.concurrent.TimeUnit;
 
 public class ElapsedTimeObjectFormat1 implements ElapsedTimeObject{
-
-	public ElapsedTimeObjectFormat1() {
-		// TODO Auto-generated constructor stub
-	}
+	Long elapsedTime;
+	String formatedTime;
 	
-	public ElapsedTimeObjectFormat1 clone() {
-		ElapsedTimeObjectFormat1 elapsedTimeF1 = null;
-		try {
-			elapsedTimeF1 = (ElapsedTimeObjectFormat1) super.clone();
-		} catch (CloneNotSupportedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return elapsedTimeF1;
+	public ElapsedTimeObjectFormat1(Long time) {
+		// TODO Auto-generated constructor stub
+		elapsedTime = time;
+	    formatedTime = String.format("%02d:%02d:%02d", TimeUnit.MILLISECONDS.toHours(elapsedTime),
+	            TimeUnit.MILLISECONDS.toMinutes(elapsedTime) - TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(elapsedTime)),
+	            TimeUnit.MILLISECONDS.toSeconds(elapsedTime) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(elapsedTime)));
 	}
 	
 	public String toString() {
-		return "ElapsedTimeObjectFormat1";
+		return "ElapsedTimeObjectFormat1 Hours:Minutes:Seconds";
+	}
+
+	@Override
+	public String getTime() {
+		// TODO Auto-generated method stub
+		return formatedTime;
 	}
 	
 }

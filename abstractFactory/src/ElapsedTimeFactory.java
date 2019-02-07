@@ -1,7 +1,9 @@
 
 public interface ElapsedTimeFactory {
-	static long programEpoch = System.currentTimeMillis();
-
-	ElapsedTimeObject getElapsedTime();	
-	UserDefinedTimeObject getUserDefinedTime();
+	static long programStart = System.currentTimeMillis();
+	static long userStart = programStart;
+	
+	ElapsedTimeObject getElapsedTimeObject();	
+	UserDefinedTimeObject getUserDefinedTimeObject();
+	String getCurTime();
 }

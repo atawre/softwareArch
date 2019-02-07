@@ -17,6 +17,9 @@ public class client {
 
 	public static void main(String[] args) {
 		long millis = System.currentTimeMillis();
+		ElapsedTimeFactory eFactory = null;		
+		ElapsedTimeObject eTime = null;
+		UserDefinedTimeObject uTime = null;
 		
 		while(true) {
 			char c;
@@ -31,10 +34,14 @@ public class client {
 					System.out.println("Reset elapsed time");
 				    break;
 				case '1':
-					System.out.println("Format 1");
+					eFactory = new ElapsedTimeFactoryV1();
+					eTime = eFactory.getElapsedTimeObject();
+					System.out.println(eTime.getTime());
 					break;
 				case '2':
-					System.out.println("Format 2");
+					eFactory = new ElapsedTimeFactoryV2();
+					uTime = eFactory.getUserDefinedTimeObject();
+					System.out.println(eTime.getTime());
 					break;
 				case 'q':
 					System.out.println("Quiting");
