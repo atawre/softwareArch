@@ -1,15 +1,14 @@
 
 public class ElapsedTimeObjectFormat2 extends  ElapsedTimeObject {
-//	Long elapsedTime;
 	String formatedTime;
-	public ElapsedTimeObjectFormat2(Long elapsedTime) {
-		// TODO Auto-generated constructor stub
-		formatedTime = Long.toString(elapsedTime);
+	public ElapsedTimeObjectFormat2(Long time) {
+		programStart = time;
 	}
 
 	@Override
 	public String getTime() {
-		// TODO Auto-generated method stub
+		long elapsedTime = System.currentTimeMillis() - programStart;
+		formatedTime = Long.toString(elapsedTime);
 		return formatedTime;
 	}
 

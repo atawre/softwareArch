@@ -1,16 +1,17 @@
 
-public class UserDefinedTimeObjectFormat2 implements UserDefinedTimeObject {
+public class UserDefinedTimeObjectFormat2 extends UserDefinedTimeObject {
 	String formatedTime;
 
-	public UserDefinedTimeObjectFormat2(Long elapsedTime) {
-		// TODO Auto-generated constructor stub
-		formatedTime = Long.toString(elapsedTime);
+	public UserDefinedTimeObjectFormat2(Long time) {
+		userStart = time;
+		long elapsedUserTime = System.currentTimeMillis() - userStart;
+		formatedTime = Long.toString(elapsedUserTime);
 	}
 
 	@Override
 	public String getTime() {
-		// TODO Auto-generated method stub
+		long elapsedUserTime = System.currentTimeMillis() - userStart;
+		formatedTime = Long.toString(elapsedUserTime);
 		return formatedTime;
 	}
-
 }

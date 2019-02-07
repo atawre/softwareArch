@@ -1,19 +1,18 @@
 import java.util.concurrent.TimeUnit;
 
-public class UserDefinedTimeObjectFormat1 implements UserDefinedTimeObject {
+public class UserDefinedTimeObjectFormat1 extends UserDefinedTimeObject {
 	String formatedTime;
 
-	public UserDefinedTimeObjectFormat1(Long elapsedTime) {
-		// TODO Auto-generated constructor stub
-	    formatedTime = String.format("%02d:%02d:%02d", TimeUnit.MILLISECONDS.toHours(elapsedTime),
-	            TimeUnit.MILLISECONDS.toMinutes(elapsedTime) - TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(elapsedTime)),
-	            TimeUnit.MILLISECONDS.toSeconds(elapsedTime) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(elapsedTime)));
-		
+	public UserDefinedTimeObjectFormat1(Long time) {
+		userStart = time;
 	}
 
 	@Override
 	public String getTime() {
-		// TODO Auto-generated method stub
+		long elapsedUserTime = System.currentTimeMillis() - userStart;
+	    formatedTime = String.format("%02d:%02d:%02d", TimeUnit.MILLISECONDS.toHours(elapsedUserTime),
+	            TimeUnit.MILLISECONDS.toMinutes(elapsedUserTime) - TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(elapsedUserTime)),
+	            TimeUnit.MILLISECONDS.toSeconds(elapsedUserTime) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(elapsedUserTime)));
 		return formatedTime;
 	}
 }

@@ -4,26 +4,21 @@ import java.util.Date;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
-/*
-'t': display current time
-'r': reset elapsed time to 0 and display confirmation
-'1': change to display format 1
-'2': change to display format 2
-'q': quit the program.
- */
-
 
 public class client {
 
 	public static void main(String[] args) {
-		long millis = System.currentTimeMillis();
-		ElapsedTimeFactory factory   = null;
-		ElapsedTimeFactory factoryV1 = new ElapsedTimeFactoryV1();;
-		ElapsedTimeFactory factoryV2 = new ElapsedTimeFactoryV2();;
-		factory = factoryV1;
+		long programStart = System.currentTimeMillis();
+		long userStart = programStart;
+
+		ElapsedTimeObject eTimeF1 = new ElapsedTimeObjectFormat1(programStart);
+		UserDefinedTimeObject uTimeF1 = new UserDefinedTimeObjectFormat1(userStart);
+		ElapsedTimeObject eTimeF2 = new ElapsedTimeObjectFormat2(programStart);
+		UserDefinedTimeObject uTimeF2 = new UserDefinedTimeObjectFormat2(userStart);
 		
-		ElapsedTimeObject eTime = null;
-		UserDefinedTimeObject uTime = null;
+		ElapsedTimeObject eTime = eTimeF1.clone();
+		UserDefinedTimeObject uTime = uTimeF1.clone();
+
 		char c;
 
 		while(true) {
@@ -31,27 +26,33 @@ public class client {
 				c = (char) System.in.read();
 				switch(c) {
 				case 't':
-//					System.out.println("Current time "+ factory.getCurTime());
-					eTime = factory.getElapsedTimeObject();
-					uTime = factory.getUserDefinedTimeObject();
-					System.out.println("Elapsed program time " + eTime.getTime());
-					System.out.println("Elapsed user time    " + uTime.getTime());
+					System.out.println("Elapsed time		" + eTime.getTime());
+					System.out.println("User elapsed time	" + uTime.getTime());
 					System.out.println();
 					break;
 				case 'r':
+					userStart = System.currentTimeMillis();
+					uTime.setUserStart(userStart);
+					uTimeF1.setUserStart(userStart);
+					uTimeF2.setUserStart(userStart);
 					System.out.println("User elapsed time is reset");
 					System.out.println();
-					factory.resetUserTime();
 				    break;
 				case '1':
-					factory = factoryV1;
-					System.out.println("Format changed to HH:MM:SS");
-					System.out.println();
+					System.out.println("Elapsed time format is 		: HH:MM:SS");
+					eTime = eTimeF1.clone();
 					break;
 				case '2':
-					factory = factoryV2;
-					System.out.println("Format changed to milli seconds");
-					System.out.println();
+					System.out.println("User elapsed time format is	: HH:MM:SS");
+					uTime = uTimeF1.clone();
+					break;
+				case '3':
+					System.out.println("Elapsed time format is		: Milli Seconds");
+					eTime = eTimeF2.clone();
+					break;
+				case '4':
+					System.out.println("User elapsed time format is	: Milli Seconds");
+					uTime = uTimeF2.clone();
 					break;
 				case 'q':
 					System.out.println("Quiting");
