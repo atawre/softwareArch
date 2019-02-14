@@ -1,0 +1,85 @@
+﻿/* instructions submission text */
+.daylight .d2l-dropbox-submissiontext {
+	max-width: 732px;
+}
+
+/* assignment submission comments */
+.daylight .d2l-htmlblock-assignments-comments .d2l-htmlblock {
+	white-space: normal;
+}
+
+.daylight .d2l-htmlblock-assignments-comments .d2l-htmlblock p {
+	margin-top: 0 !important;
+	margin-bottom: 0 !important;
+}
+
+/* late assignment text */
+.daylight .d2l-dropbox-latetext {
+	line-height: normal;
+}
+
+.daylight .d2l-foldername {
+	white-space: pre-wrap;
+}
+
+.d2l-foldername .dco_c {
+	display: flex;
+	align-items: center;
+}
+
+/* assignment folder name */
+.daylight .d2l-foldername a,
+.daylight .d2l-foldername label {
+	white-space: normal;
+}
+
+/* assignment folder list in grid */
+.daylight .d2l-folder-list-grid tr.d_gh th.d_gc {
+	min-width:350px;
+}
+
+.daylight .d2l-folder-list-grid tr.d_gh th.d_gc ~ th.d_gc {
+	min-width:inherit;
+}
+
+.daylight .d2l-folder-list-grid tr.d_gh th.d_gc ~ th.d_gc:last-child {
+	min-width:170px;
+
+}
+
+.daylight .d2l-dropbox-feedback .dcs_cf {
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+/* folder_user_mark */
+.daylight .d2l-assignment-mark-user .dsl_p_m,
+.daylight .d2l-assignment-mark-user .dsl_pmv,
+.daylight .d2l-assignment-mark-user .dsl_m,
+.daylight .d2l-assignment-mark-user .dsl_pmh {
+	overflow: visible;
+}
+
+.daylight .d2l-assignment-mark-user .dsl_p_m {
+	height: calc(100vh - 40px);
+}
+
+.daylight .d2l-assignment-mark-user .dsl_p_bh {
+	height: calc(100vh - 20px);
+}
+		
+.daylight .d2l-assignment-mark-user #z_bg,
+.daylight .d2l-assignment-mark-user #z_v,
+.daylight .d2l-assignment-mark-user #z_s {
+	background-color: rgb(249,250,251);
+}
+
+.daylight .d2l-sticky-button-area {
+	position: sticky;
+	background-color: white;
+	bottom: 0;
+	padding-top: 12px;
+	padding-bottom: 12px;
+	box-shadow: 0 -2px 4px 0 rgba(86, 90, 92, .2);
+	border-top: 1px solid #d3d9e3;
+}
