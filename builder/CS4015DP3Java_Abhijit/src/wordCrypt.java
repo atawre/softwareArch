@@ -57,11 +57,13 @@ public class wordCrypt extends serviceBuilder{
 			ArrayList<String> keyList = new ArrayList<String>(wordCipher.keySet());
 			int uniquePosition = 1;
 			for (Map.Entry<String, String> e : wordCipher.entrySet()) {
-				System.out.println(positionCipher);
-				System.out.println(uniquePosition);
-				System.out.println(uniquePosition%8);
-				int newPosition = positionCipher.get(uniquePosition%8);
-				System.out.println(newPosition);
+//				System.out.println(positionCipher);
+//				System.out.println(uniquePosition);
+//				System.out.println(uniquePosition%8);
+//				System.out.println(newPosition);
+				int newPosition = 1;
+				if(uniquePosition%8 != 0)
+					newPosition = positionCipher.get(uniquePosition%8);
 				
 				String key = e.getKey();
 				String replacement = keyList.get(newPosition);
