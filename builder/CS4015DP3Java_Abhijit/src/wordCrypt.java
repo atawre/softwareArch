@@ -34,16 +34,28 @@ public class wordCrypt extends serviceBuilder{
         return INSTANCE;
 	}
 	
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-	}
-
 	@Override
 	public void setFileName() {
 		outFile = inFile + ".Z3";
 	}
 
+	public String getWordAt(int index) {
+		int id = 1;
+		String word = null;
+		try(Scanner sc = new Scanner(new FileInputStream(inFile))){
+			while(sc.hasNext()) {
+				word = sc.next();
+				if(id == index)
+					break;
+				id++;
+			}
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return word;
+	}
+	
 	@Override
 	public void transform() {
 		try(Scanner sc = new Scanner(new FileInputStream(inFile))){
@@ -57,19 +69,16 @@ public class wordCrypt extends serviceBuilder{
 			ArrayList<String> keyList = new ArrayList<String>(wordCipher.keySet());
 			int uniquePosition = 1;
 			for (Map.Entry<String, String> e : wordCipher.entrySet()) {
-//				System.out.println(positionCipher);
-//				System.out.println(uniquePosition);
-//				System.out.println(uniquePosition%8);
-//				System.out.println(newPosition);
-				int newPosition = 1;
+				int newPosition = positionCipher.get(1);
 				if(uniquePosition%8 != 0)
 					newPosition = positionCipher.get(uniquePosition%8);
 				
 				String key = e.getKey();
-				String replacement = keyList.get(newPosition);
+				String replacement = getWordAt(newPosition);
 				wordCipher.replace(key, replacement);
 				uniquePosition++;
 			}
+			System.out.println(wordCipher);
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -89,12 +98,10 @@ public class wordCrypt extends serviceBuilder{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 	}
 
 	@Override
 	public String getResultFile() {
 		return outFile;
 	}
-
 }
