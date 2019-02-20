@@ -8,6 +8,7 @@ public class client {
 
 	public static void main(String[] args) {
 		virtualFileSystem vfs = new arrayFS(new simpleArray());
+		command cmd = new fsCommand(vfs);
 		while(true) {
 			System.out.println("\n" +
 				"C <name> : create a file called <name>\n" + 
@@ -26,25 +27,25 @@ public class client {
 			case 'C' :
 				System.out.println("Enter file name : ");
 				name = s.next();
-				vfs.create(name);
+				cmd.createFile(name);
 				break;
 			case 'd':
 			case 'D':
 				System.out.println("Enter file name : ");
 				name = s.next();
-				vfs.delete(name);				
+				cmd.deleteFile(name);				
 				break;
 			case 'r':
 			case 'R':
 				System.out.println("Enter file name : ");
 				name = s.next();
-				System.out.println(vfs.read(name));
+				System.out.println(cmd.readFile(name));
 				break;
 			case 'w':
 			case 'W':
 				System.out.println("Enter file name : ");
 				name = s.next();
-				vfs.write(name);
+				cmd.writeFile(name);
 				break;
 			case 'q':
 			case 'Q':
