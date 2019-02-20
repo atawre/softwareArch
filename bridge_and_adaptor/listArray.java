@@ -19,50 +19,6 @@ public class listArray implements storageArray{
 		tail = 0;
 	}
 
-	public static void main(String[] args) {		
-		listArray nvme = new listArray();
-		while(true) {
-			System.out.println("\n" +
-				"C <name> : create a file called <name>\n" + 
-				"D <name> : delete a file called <name>\n" + 
-				"R <name> : read a file called <name> (print the content of the file)\n" + 
-				"W <name> : write a file called <name> (add one random ASCII character to the file)\n" +
-				"Q : Quit\n"
-				);
-
-			Scanner s = new Scanner(System.in); 
-			char 	c = s.next().charAt(0);
-			String name = null;
-			
-			switch(c) {
-			case 'c' :
-			case 'C' :
-				System.out.println("Enter file name : ");
-				name = s.next();
-				nvme.create(name);
-				break;
-			case 'd':
-			case 'D':
-				break;
-			case 'r':
-			case 'R':
-				System.out.println("Enter file name : ");
-				name = s.next();
-				nvme.read(name);
-				break;
-			case 'w':
-			case 'W':
-				System.out.println("Enter file name : ");
-				name = s.next();
-				nvme.write(name);
-				break;
-			case 'q':
-			case 'Q':
-				return;
-			}
-		}
-	}
-
 	/*
 	 * Creates a new file at the end of array.
 	 * filename is appended to storage array.
@@ -93,14 +49,29 @@ public class listArray implements storageArray{
 	/*
 	 * reads content of the file mentioned in name variable.
 	 */
-	public void read(String name) {
+	public String read(String name) {
 		int findex = array.indexOf(name);
 		int len = array.length();
+		String data = null;
 		Pattern pattern = Pattern.compile(name + ";" + "((.*?),|(.*$))");
 		Matcher matcher = pattern.matcher(array);
 		if(matcher.find()) {
-			System.out.println(matcher.group(1));
+			data = matcher.group(1);
 		}
+		return data;
+	}
+
+	@Override
+	public boolean search(String name) {
+		Pattern pattern = Pattern.compile(name + ";");
+		Matcher matcher = pattern.matcher(array);
+		return matcher.find();
+	}
+
+	@Override
+	public boolean delete(String name) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }
 
