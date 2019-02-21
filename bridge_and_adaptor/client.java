@@ -3,11 +3,15 @@ import java.util.Scanner;
 public class client {
 
 	public client() {
-		// TODO Auto-generated constructor stub
+
 	}
 
 	public static void main(String[] args) {
-		virtualFileSystem vfs = new arrayFS(new simpleArray());
+		//This is an example with storage array implemented as list.
+		//You can change it to include the implementation using simple Array too with following change
+		//virtualFileSystem vfs = new arrayFS(new simpleArray());
+
+		virtualFileSystem vfs = new arrayFS(new listArray());
 		command cmd = new fsCommand(vfs);
 		while(true) {
 			System.out.println("\n" +
@@ -21,7 +25,7 @@ public class client {
 			Scanner s = new Scanner(System.in); 
 			char 	c = s.next().charAt(0);
 			String name = null;
-			
+
 			switch(c) {
 			case 'c' :
 			case 'C' :
@@ -33,7 +37,7 @@ public class client {
 			case 'D':
 				System.out.println("Enter file name : ");
 				name = s.next();
-				cmd.deleteFile(name);				
+				cmd.deleteFile(name);
 				break;
 			case 'r':
 			case 'R':

@@ -48,6 +48,7 @@ public class simpleArray implements storageArray{
 	
 	/*
 	 * reads content of the file mentioned in name variable.
+	 * I am not removing the , in the end.
 	 */
 	public String read(String name) {
 		String data = null;
