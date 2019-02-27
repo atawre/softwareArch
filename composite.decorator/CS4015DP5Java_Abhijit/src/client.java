@@ -16,6 +16,8 @@ public class client {
 	}
 	
 	public static void main(String[] args) {
+		//pending operators are saved in LIFO order.
+		//Any operator that is yet to receive it's children, is pending.
 		Stack <Node> pendingOperators = new Stack<Node> ();
 		
 		Node root = null;
@@ -40,11 +42,12 @@ public class client {
 				case 'o':
 				case 'O' :
 					op = scan.next().charAt(0);
-					operator = new quotedNode(new Operator(op));
+					operator = new Operator(op);
 					if(root==null)
-						root = operator;
+						root = operator;		//set the root for the tree
+					
 					if(pendingOperators.size() > 0) {
-						prevOperator = pendingOperators.pop();
+						prevOperator = pendingOperators.pop();	//get previous operator
 						if(prevOperator.getLeft()==null) {
 							prevOperator.addLeft(operator);
 							pendingOperators.push(prevOperator);	//right child still pending.
@@ -52,12 +55,16 @@ public class client {
 							prevOperator.addRight(operator);
 						}
 					}
-					pendingOperators.push(operator);
+					pendingOperators.push(operator);	//current operator becomes pending here.
 					break;
 				case 'n':
 				case 'N' :
 					num = scan.nextInt();
-					number = new quotedNode(new Leaf(num));
+
+					//--------------------------------------
+					//DECORATED Leaf
+					//--------------------------------------
+					number = new quotedNode(new Leaf(num));	
 
 					if(pendingOperators.size() > 0) {
 						prevOperator = pendingOperators.pop();
@@ -72,44 +79,6 @@ public class client {
 				}
 			}
 		}
-
-
-// Iterative method to do level order traversal line by line 
-//    static void printLevelOrder(Node root) 
-//    { 
-//        // Base Case 
-//        if(root == null) 
-//            return;
-//        // Create an empty queue for level order tarversal 
-//        Queue<Node> q =new LinkedList<Node>(); 
-//        
-//        // Enqueue Root and initialize height 
-//        q.add(root);
-//
-//        while(true)
-//        {     
-//            // nodeCount (queue size) indicates number of nodes 
-//            // at current level. 
-//            int nodeCount = q.size(); 
-//            if(nodeCount == 0) 
-//                break;
-//            // Dequeue all nodes of current level and Enqueue all
-//            // nodes of next level
-//            while(nodeCount > 0)
-//            {
-//                Node node = q.peek(); 
-//                node.display();
-//                q.remove();
-//                if(node.left != null) 
-//                    q.add(node.left);
-//                if(node.right != null) 
-//                    q.add(node.right); 
-//                nodeCount--; 
-//            }
-//            System.out.println(); //new line for this level
-//        }
-//	}
-
 }
 
 

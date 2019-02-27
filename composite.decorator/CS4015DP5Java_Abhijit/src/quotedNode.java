@@ -6,6 +6,7 @@ public class quotedNode extends nodeDecorator{
 		// TODO Auto-generated constructor stub
 	}
 
+	//Adds quotes around the display leaf/operator.
 	@Override
 	public void display() {
 		System.out.print("'");
