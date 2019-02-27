@@ -1,23 +1,22 @@
 
-public class Node {
-	char op;
-	Node left, right;
-	public Node() {
-		left = right = null;
-	}
-	
-	public Node(char c) {
-		op = c;
-		left = right = null;
-	}
-	
-	public Node(char c, Node l, Node r) {
-		op = c;
-		left = l;
-		right = r;
-	}
-	
+public abstract class Node {
 	public void display() {
-		System.out.print(Character.toString(op) + " ");
 	}
+	
+	public Node getLeft() {
+		throw new UnsupportedOperationException();
+	}
+	
+	public Node getRight() {
+		throw new UnsupportedOperationException();
+	}
+	
+	public void addLeft(Node l) {
+		throw new UnsupportedOperationException();
+	}
+	
+	public void addRight(Node r) {
+		throw new UnsupportedOperationException();
+	}	
+
 }
