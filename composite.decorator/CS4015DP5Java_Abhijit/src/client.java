@@ -26,7 +26,6 @@ public class client {
 		Node operator = null;
 		Node number = null;
 		
-		
 		while(true) {
 			Scanner scan = new Scanner(System.in);
 			cmd = scan.next().charAt(0);
@@ -41,7 +40,7 @@ public class client {
 				case 'o':
 				case 'O' :
 					op = scan.next().charAt(0);
-					operator = new Operator(op);
+					operator = new quotedNode(new Operator(op));
 					if(root==null)
 						root = operator;
 					if(pendingOperators.size() > 0) {
@@ -58,8 +57,8 @@ public class client {
 				case 'n':
 				case 'N' :
 					num = scan.nextInt();
-					number = new Leaf(num);
-					
+					number = new quotedNode(new Leaf(num));
+
 					if(pendingOperators.size() > 0) {
 						prevOperator = pendingOperators.pop();
 						if(prevOperator.getLeft()==null) {
@@ -109,7 +108,7 @@ public class client {
 //            }
 //            System.out.println(); //new line for this level
 //        }
-//    }
+//	}
 
 }
 

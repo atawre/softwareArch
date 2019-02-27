@@ -1,5 +1,5 @@
 
-public class Operator extends Node {
+public class Operator implements Node {
 	Character op;
 	Node left, right;
 
@@ -8,8 +8,7 @@ public class Operator extends Node {
 			left.display();
 
 		System.out.print(op);
-		System.out.print(" ");
-
+		
 		if(right!=null)
 			right.display();
 	}
@@ -38,7 +37,6 @@ public class Operator extends Node {
 	public void addRight(Node r) {
 		right = r;
 	}
-
 }
 
 
