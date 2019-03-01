@@ -4,6 +4,8 @@ public interface Node {
 
 	public void display();
 
+	public String getVal();
+	
 	Node getLeft();
 
 	Node getRight();

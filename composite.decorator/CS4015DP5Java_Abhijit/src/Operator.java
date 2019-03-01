@@ -3,6 +3,10 @@ public class Operator implements Node {
 	Character op;
 	Node left, right;
 
+	public String getVal() {
+		return Character.toString(op);
+	}
+	
 	//inorder traversal is used to print the operator.
 	public void display() {
 		if(left!=null)

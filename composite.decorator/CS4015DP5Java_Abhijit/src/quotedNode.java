@@ -13,4 +13,9 @@ public class quotedNode extends nodeDecorator{
 		tempNode.display();
 		System.out.print("'");
 	}
+
+	@Override
+	public String getVal() {
+		return "'" + tempNode.getVal() + "'";
+	}
 }

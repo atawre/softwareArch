@@ -5,6 +5,10 @@ public class Leaf implements Node {
 		val = v;
 	}
 
+	public String getVal() {
+		return Integer.toString(val);
+	}
+	
 	//Only displays the number in the leaf. Basic printing.
 	public void display() {
 		System.out.print(val);
