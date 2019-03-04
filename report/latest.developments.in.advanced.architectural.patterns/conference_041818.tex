@@ -32,18 +32,31 @@ luigi.benedicenti@unb.ca}
 \maketitle
 
 \begin{abstract}
-This document is a model and instructions for \LaTeX.
-This and the IEEEtran.cls file define the components of your paper [title, text, heads, etc.]. *CRITICAL: Do Not Use Symbols, Special Characters, Footnotes, 
-or Math in Paper Title or Abstract.
+In this document, the common software architectural patterns are brifely discussed. The document further describes latest advancements in service oriented architecture, microservices, reactive programming and resilient software development.
 \end{abstract}
 
 \begin{IEEEkeywords}
-component, formatting, style, styling, insert
+SOA, microservice, reactive programming, resilient software
 \end{IEEEkeywords}
 
-\section{Introduction}
-This document is a model and instructions for \LaTeX.
-Please observe the conference page limits. 
+\section{Architectural design patterns}
+Large enterprise needs software that scales with ever chaging and increasing needs of the business. Selecting the right architecture before diving into the actual work is crucial to the success of the application and enterprise. This section explores various architectural patterns used in the industry. The pros and cons will be discussed for each of the pattern.
+
+\subsection{Layered architecture}
+It is the most common architecture style, that organize similar modules into horizontal layers. The layers are independent of others and inteact using exported APIs. An application can be designed using any number of layers. The network protocol stack is a good example of layered architecture. The in upper layer is transmitted to lower layers using encapsulated packets. A layer don't have to know the inner working of other layer and communication happens through a set of APIs exposed by each layer. Another example of bussiness application, that is divided into presentation, logic and data tiers. Following of some of the benefits offered by this architecture.
+\begin{itemize}
+\item Layers can be developed and tested independently.
+\item Changes made in one layer doesn't affect the other layer, hence maintainable.
+\item Low coupling and high cohesion
+\item Lower layers have no dependency on higher layer and hence reusable.
+\end{itemize}
+
+The disadvantages can be summarized as follow.
+\begin{itemize}
+\item A change to any component may trigger a redeployment of the entire application.
+\item Each layer can have separate physical deployment or an entire application can be replicated. It is too coarse grained from deployment perspective.
+\item Communication across layers can be a performance bottleneck for certain applications.
+\end{itemize}
 
 \section{Ease of Use}
 

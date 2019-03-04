@@ -36,9 +36,8 @@ Client pseudo code for Level wise printing.
 			push it's children to queue for next cycle
 		
 		Print new line  for a level
-		
 
 
 Note : I have not included the level wise printing in the model, since this is implemented after submitting the diagram.
-		However, it fits into existing design and isn't any different from the existing quoted nodes hierarchy.
-		
+	However, it fits into existing design and isn't any different from the existing quoted nodes hierarchy.
+
