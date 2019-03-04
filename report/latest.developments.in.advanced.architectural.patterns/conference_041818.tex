@@ -71,10 +71,28 @@ This approach is suitable for large applications that can be broken down to mult
 \item A broken filter leads to a complete broken pipe.
 \end{itemize}
 
-
 \subsection{Peer to peer architecture}
+A peer-to-peer (P2P) architecture consists of a decentralized network of peers i.e. nodes. Unline client-server architecture, a node in this architecture can act both as a server and a client.
+The workload is split into small chunks that can be reassembled later, allowing peers to work simultaneously on a task. E.g. P2P file sharing, where a file is split into chunks that allows many chunks to be downloaded from diffrent peers at the same time.
+\begin{itemize}
+\item Need for centralized server is eliminated.
+\item There is no single point of failure, unless the number of peers are too few.
+\item The increase in number of peers can be handled easily i.e., scalable.
+\item The model is prone to security issue, as an infected peer can affect the whole network.
+\item Fairless garuntees are difficult to enforce as many leeches could benefit free riders.
+\item Instant messaging, file sharing, collaboration apps use P2P architecture. E.g. Bitcoin, BitTorrent, napster etc.
+\end{itemize}
 
 \subsection{Blackboard}
+It is similar to boardroom where people solve the problem using a whiteboard. The component blackboard acts as a global information store. It allows various components to collaborate towards the final solution. The controller component monitors the blackboard and schedules individual knowledge sources. The knowledge sources are specialized workers with its own representation of the problem. The communication happens through the blackboard. The CAD software is an example of blackboard design.
+\begin{itemize}
+\item Efficient scheduling of tasks and resource management across a distributed network.
+\item Better suited when a problem can be split into multiple sub-problems.
+\item Not always easy to break down a task into subproblems.
+\item Everything is shared and can cause unwated information flows.
+\item Controller design can become overly complex and unmaintainable.
+\item Knowledge sources being independent, allows for reusability.
+\end{itemize}
 
 \section{Prepare Your Paper Before Styling}
 Before you begin to format your paper, first write and save the content as a 
