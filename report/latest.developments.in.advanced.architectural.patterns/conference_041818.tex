@@ -58,17 +58,23 @@ The disadvantages can be summarized as follow.
 \item Communication across layers can be a performance bottleneck for certain applications.
 \end{itemize}
 
-\section{Ease of Use}
+\subsection{client-server architecture}
+It consists of a server and multiple clients. The server keeps listening to the client requests. The server responds to any new client requests i.e., provides a service to those clients.
+E.g. the encryption key control server provides encryption keys to the requesting clients over network. This model is prone to denial of service attack. The scalability requires replicating the server components with load balancing, failover and failback mechanisms.
+\subsection{Pipe and filter architecture} 
+This approach is suitable for large applications that can be broken down to multiple steps. Each step refers to a filter. The filter applies a specific function to the data and can work asynchronously as well. The pipes refer to the connectors between these filters. The output of one filter serves as an input for the next filter on the pipeline. The common example is Unix pipes. 
+\begin{itemize}
+\item Adding a new step is easy by adding a new filter and adding it to existing pipe stream.
+\item It is easier to reuse of filters doing generic actions.
+\item Promotes concurrency of different filters do not depend on each other.
+\item The errors gets propogated across the filters, which is a downside of this architecture.
+\item A broken filter leads to a complete broken pipe.
+\end{itemize}
 
-\subsection{Maintaining the Integrity of the Specifications}
 
-The IEEEtran class file is used to format your paper and style the text. All margins, 
-column widths, line spaces, and text fonts are prescribed; please do not 
-alter them. You may note peculiarities. For example, the head margin
-measures proportionately more than is customary. This measurement 
-and others are deliberate, using specifications that anticipate your paper 
-as one part of the entire proceedings, and not as an independent document. 
-Please do not revise any of the current designations.
+\subsection{Peer to peer architecture}
+
+\subsection{Blackboard}
 
 \section{Prepare Your Paper Before Styling}
 Before you begin to format your paper, first write and save the content as a 
