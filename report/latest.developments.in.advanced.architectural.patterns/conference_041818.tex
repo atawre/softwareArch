@@ -83,6 +83,20 @@ The workload is split into small chunks that can be reassembled later, allowing 
 \item Instant messaging, file sharing, collaboration apps use P2P architecture. E.g. Bitcoin, BitTorrent, napster etc.
 \end{itemize}
 
+\subsection{Event based architecture}
+The callbacks mechanism describes this architecture well. It consists of source, listener, and a bus. The event source send a message i.e. an event on the bus to other component. The listener responds by performing some action. The components comminicate only via the event bus. The linux device driver interrupt handlers employ this mechanism. 
+\begin{itemize}
+\item Changing name or type of an even requires changes to the listener.
+\item Too many event sources or listeners lead to bottleneck for the bus.
+\item Following the control flow is difficult due to asynchronous nature of events.
+\item The producer and consumer of the event need not be aware of each other allowing for loose coupling
+\item Loose coupling makes it easy for a component to evolve independently.
+\item Message passing over the bus introduce additional abstraction and may not be efficient.
+\end{itemize}
+
+\subsection{Interpreter}
+
+
 \subsection{Blackboard}
 It is similar to boardroom where people solve the problem using a whiteboard. The component blackboard acts as a global information store. It allows various components to collaborate towards the final solution. The controller component monitors the blackboard and schedules individual knowledge sources. The knowledge sources are specialized workers with its own representation of the problem. The communication happens through the blackboard. The CAD software is an example of blackboard design.
 \begin{itemize}
