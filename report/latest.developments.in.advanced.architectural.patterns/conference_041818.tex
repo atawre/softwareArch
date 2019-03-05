@@ -17,13 +17,13 @@
 }
 
 \author{\IEEEauthorblockN{Abhijit Taware}
-\IEEEauthorblockA{\textit{Computer Science (of Aff.)} \\
+\IEEEauthorblockA{\textit{Computer Science (Masters student)} \\
 \textit{UNB}\\
 Fredericton, Canada \\
 ataware@unb.ca}
 \and
 \IEEEauthorblockN{Luigi Benedicenti}
-\IEEEauthorblockA{\textit{ Computer Science } \\
+\IEEEauthorblockA{\textit{ Computer Science (Dean)} \\
 \textit{UNB}\\
 Fredericton, Canada \\
 luigi.benedicenti@unb.ca}
@@ -95,7 +95,14 @@ The callbacks mechanism describes this architecture well. It consists of source,
 \end{itemize}
 
 \subsection{Interpreter}
-
+It consists of a program to be executed, an interpreter which runs such a program, program state and memory component required any storage needs. The interpreted languages like Awk, Perl, Python or Java are prime example of this architectural style of development.
+\begin{itemize}
+\item Program development becomes easy with the help of interpreter.
+\item Allows portability across various platforms.
+\item Debugging become easier.
+\item An extra level of indirection makes execution slower.
+\item Interpreter can gaurd against malicious instruction 
+\end{itemize}
 
 \subsection{Blackboard}
 It is similar to boardroom where people solve the problem using a whiteboard. The component blackboard acts as a global information store. It allows various components to collaborate towards the final solution. The controller component monitors the blackboard and schedules individual knowledge sources. The knowledge sources are specialized workers with its own representation of the problem. The communication happens through the blackboard. The CAD software is an example of blackboard design.
@@ -107,6 +114,10 @@ It is similar to boardroom where people solve the problem using a whiteboard. Th
 \item Controller design can become overly complex and unmaintainable.
 \item Knowledge sources being independent, allows for reusability.
 \end{itemize}
+
+\subsection{Publish Subscribe Architecture}
+
+
 
 \section{Prepare Your Paper Before Styling}
 Before you begin to format your paper, first write and save the content as a 
