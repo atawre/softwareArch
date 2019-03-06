@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2018.8.14)  5 MAR 2019 21:12
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2018.8.14)  6 MAR 2019 01:58
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -435,22 +435,22 @@ Underfull \hbox (badness 4886) in paragraph at lines 115--116
 
 [2]
 ! Misplaced alignment tab character &.
-l.157 \bibitem{comparison} Cerny, Tom &
+l.176 \bibitem{comparison} Cerny, Tom &
                                         J. Donahoo, Michael & Pechanec, Jiri...
 
 ? 
 ! Misplaced alignment tab character &.
-l.157 ...rison} Cerny, Tom & J. Donahoo, Michael &
+l.176 ...rison} Cerny, Tom & J. Donahoo, Michael &
                                                    Pechanec, Jiri. (2017). D...
 
 ? 
 ! Misplaced alignment tab character &.
-l.158 ...{SOA}Gold, N.E., Knight, C., Mohan, A., &
+l.177 ...{SOA}Gold, N.E., Knight, C., Mohan, A., &
                                                    Munro, M. (2004). Underst...
 
 ? 
 ! Misplaced alignment tab character &.
-l.159 \bibitem{caseStudy} Marquez, Gaston &
+l.178 \bibitem{caseStudy} Marquez, Gaston &
                                             Astudillo, Hernan. (2018). Actua...
 
 ? 
@@ -465,9 +465,7 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[3
-
-] (./conference_041818.aux) ) 
+[3] (./conference_041818.aux) ) 
 Here is how much of TeX's memory you used:
  4376 strings out of 493304
  63283 string characters out of 6139871
@@ -476,13 +474,13 @@ Here is how much of TeX's memory you used:
  39391 words of font info for 84 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
  38i,8n,35p,686b,269s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips/bas
-e/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pf
-b></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/t
-exlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/texmf-d
-ist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1
-/urw/times/utmri8a.pfb>
-Output written on conference_041818.pdf (3 pages, 69319 bytes).
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/b
+ase/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.
+pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share
+/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/texmf
+-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/typ
+e1/urw/times/utmri8a.pfb>
+Output written on conference_041818.pdf (3 pages, 72078 bytes).
 PDF statistics:
  35 PDF objects out of 1000 (max. 8388607)
  24 compressed objects within 1 object stream

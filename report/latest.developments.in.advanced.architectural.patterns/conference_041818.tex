@@ -131,7 +131,7 @@ All such issues leads to newer architectural paradigm shift, which is described 
 
 \subsection{SOA}
 SOA \cite{SOA} allows application to be modularized into services. A centralized component is responsible for the service integration and comminication.
-This is achieved using an Enterprise service bus (EJB), which acts as an \textit{orchestrator}. The data model for SOA applications evolve by an agreement between many services.
+This is achieved using an Enterprise service bus (ESB), which acts as an \textit{orchestrator}. The data model for SOA applications evolve by an agreement between many services.
 However, such a canonical data model being shared by many services, which limits the evolution. The services often reflect the comminication pattern of the organization, a.k.a. Conway's law \cite{conway}. \par 
 The SOA is often implemented as web services which use following communication methods.
 \begin{itemize}
@@ -147,6 +147,25 @@ Most organizations need to deal with existing legacy applications before adoptin
 \end{itemize}
 SOA sometimes is referred to as "simple service and smart pipes" \cite{comparison}.
 \subsection{Microservices}
+Microservices \cite{microservice} allows applications to be made up of small, self-contained independent units i.e., services working together through APIs interface. Martin fowler \cite{microservice} describes following key characteristics for of the microservice.
+\begin{itemize}
+\item \textit{Componentization} : Services are independent units that communicate with other services using web requests or remote procedure calls.
+\item \textit{Business capabilities} :  Services represent the business capability, with responsibility for a complete stack.
+\item \textit{Product rather than projects} : Microservices treat services as products and claim ownership. The ongoing maintainance requires complying with business needs.
+\item \textit{Dumb pipes and smart endpoints} : Microservices do not use ESBs. The services are intelligent and communication channel is userd merely for message passing. The communicationnication channel does not implement any service functionality i.e., the channel implementation is simple.
+\item \textit{Decentralized governance} : There is no orchestrator, instead it evolves towards choreagraphy and event collaboration.
+\item \textit{Bounded context} : Domain-driven design complex domain up into multiple bounded contexts and maps out the relationships between them. This leads each service to have its own localized version of data model promoting loose coupling.
+\end{itemize}
+
+Microservices architecture constatly introduce new services that requires DevOps to ensure component updates in production environment. 
+It has disadvantages such as code duplication, interfaces mismatch, operations overhead and the challenge of continuous testing of multiple systems. However, the benefits of creating loosely coupled components by independent teams using a variety of languages and tools far outweigh the disadvantages. Some of examples of microservice adoption are listed below.
+
+\begin{itemize}
+\item \textit{Netflix} : Moved away from single war file to full fledged microservice approach.
+\item \textit{The gaurdian} : This website maintains their core monolithic system but use microservice for new components.
+\item \textit{Gilt groupe} : Uses massive microservice approach to their shopping site, allowng various teams working on different services.
+\end {itemize}
+
 \subsection{Containers}
 \subsection{Reactive programming}
 \subsection{Resilient software development}
@@ -157,7 +176,7 @@ SOA sometimes is referred to as "simple service and smart pipes" \cite{compariso
 \bibitem{comparison} Cerny, Tom & J. Donahoo, Michael & Pechanec, Jiri. (2017). Disambiguation and Comparison of SOA, Microservices and Self-Contained Systems. 228-235. 10.1145/3129676.3129682.
 \bibitem{SOA}Gold, N.E., Knight, C., Mohan, A., & Munro, M. (2004). Understanding service-oriented software. IEEE Software, 21, 71-77.
 \bibitem{caseStudy} Marquez, Gaston & Astudillo, Hernan. (2018). Actual Use of Architectural Patterns in Microservices-based Open Source Projects.
-\bibitem{conway} M. Conway, Conways law. https://en.wikipedia.org/wiki/Conway 
+\bibitem{conway} M. Conway, Conways law. https://en.wikipedia.org/wiki/Conway
 \end{thebibliography}
 
 \end{document}
