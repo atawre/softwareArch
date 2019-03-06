@@ -32,7 +32,7 @@ luigi.benedicenti@unb.ca}
 \maketitle
 
 \begin{abstract}
-In this document, the common software architectural patterns are brifely discussed. The document further describes latest advancements in service oriented architecture, microservices, reactive programming and resilient software development.
+With the advent of paradigm like microservices, containerized applications, cloud computing etc., the software developement process is being influenced heavily. This evolved the software developement and triggered the emergence of new architectural patterns. In this document, the common software architectural patterns are brifely discussed. The document further describes latest advancements in service oriented architecture, microservices, reactive programming and resilient software development.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -167,8 +167,23 @@ It has disadvantages such as code duplication, interfaces mismatch, operations o
 \end {itemize}
 
 \subsection{Containers}
-Containers \cite{lxc} are often termed as light weight virtual machines. An example is lxc containers built for linux systems. They provides an isolated environment with 
+Containers \cite{lxc} \cite{kubernetes} are often termed as light weight virtual machines. An example is lxc containers built for linux systems. They provides an isolated environment with exclusive access to resources like memory, network, storage etc. The following components enable the containers to provide isolation and bare-metal performance.
+\begin{itemize}
+\item \textit{Kernel namespaces} --- A namespace wraps a global system resource making it appear to the processes as their own isolated instance.
+\item \textit{SELinux} --- provides access control
+\item \textit{SeComp} --- restrict malicious usage of system calls
+\item \textit{chroot} --- allows process to change root i.e., restricts process to specific directory structure.
+\item \textit{Kernel capabilities} --- Distinguish between priviledged and un-priviledged process and allow access accordingly
+\item \textit{CGroups} --- Limits, accounts for and isolates process resource usage.
+\end{itemize}
+
+The virtual machines (VM) are widely used to host the applications. A single physical machine can have multiple VMs running allowing for a service per instance. The virtual machines have their own operating system (OS) and are resource heavy. Contrast this with containers which share the kernel with the host OS and provide resource isolation equivalent to VMs. This makes containers more attractive to deploy the microservices. Container can be equipped to have its own IP address allowing it to be the best option in cloud environments like Amazon EC2. Nothing restricts one to create containers insides a VM hosted on a third party cloud. \par
+The containerized applications need to account for failure too. It should have a mechanism to recover from failures, i.e., restarting the service on a different host or respawing the containers. 
+Today the distributed system development, with microservice architectures built from containerized software components \cite{containerPatterns} is dominating the industry.
+
 \subsection{Reactive programming}
+
+Far more efficient compared to virtual machines.
 
 \subsubsection{Observer Pattern}
 \subsubsection{Relevance of reactive programming}
@@ -183,6 +198,8 @@ Containers \cite{lxc} are often termed as light weight virtual machines. An exam
 \bibitem{conway} M. Conway, Conways law. https://en.wikipedia.org/wiki/Conway
 \bibitem{hytrust} Key Control Server.  https://www.hytrust.com/products/keycontrol/
 \bibitem{lxc} LxC Containers.  https://linuxcontainers.org/lxc/introduction/
+\bibitem{kubernetes} Kubernetes. https://kubernetes.io/
+\bibitem{containerPatterns}Brendan Burns and David Oppenheimer. 2016. Design patterns for container-based distributed systems. In Proceedings of the 8th USENIX Conference on Hot Topics in Cloud Computing (HotCloud'16). USENIX Association, Berkeley, CA, USA, 108-113.
 
 \end{thebibliography}
 
