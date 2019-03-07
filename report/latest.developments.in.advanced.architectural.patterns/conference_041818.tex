@@ -192,8 +192,7 @@ Traditionally such a task was achieved using observer pattern \cite{gof}. This p
 \end {itemize}
 The observer pattern is criticized for lack of composability, inversion of the logical relation among reactive entities and limited readability \cite{observer}. Also, it can be a source of memory leaks especially when the observer object fails to unregister itself. During such a situation the observer object can not be garbage collected. \par
 
-The following pseudocode illustrates the reactive paradigm well.
-
+The following pseudocode \cite{reactive_walkthrough} illustrates the reactive paradigm well. This code snippet receives the mouse.clicked event and the current mouse.position .
 \begin{enumerate}
 \item clicked: Event = mouse.clicked
 \item scaledPosition: Signal[(Int,Int)] = mouse.position X 0.5
@@ -201,7 +200,12 @@ The following pseudocode illustrates the reactive paradigm well.
       clicked.snapshot(scaledPosition)
 \end{enumerate}
 
-
+The mouse position is scaled by 0.5 and saved to scaledPosition variable. On every mouse click, the snapshot of the position is saved to lastClick. Any change to mouse position will reflect to scaled position in conventional imperative programming language. Same is true about the lastClick variable. However, RP converts the line #2 into a constraint. The RP runtime identifies the dependency between scaledPosition and mouse.position, making realtime updates possible. This technique can be applied to MVC architecture to get the view updated every time something changes in the model. 
+\begin{itemize}
+\item There are no bugs because of forgotten updates
+\item No redundant computations in case programmers code defensively and update too much,
+\item Applications are easily extensible as constraints can be composed, i.e., built on top of other constraints.
+\end{itemize}
 
 \subsection{Resilient software development}
 
@@ -218,6 +222,7 @@ The following pseudocode illustrates the reactive paradigm well.
 \bibitem{mvc}Model-View-Controller and the Observer Pattern http://peak.telecommunity.com/DevCenter/Trellis#model-view-controller-and-the-observer-pattern
 \bibitem{gof} Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides (1994). Design Patterns: Elements of Reusable Object-Oriented Software. Addison Wesley. pp. 293ff. ISBN 0-201-63361-2.
 \bibitem{observer} Maier, Ingo et al. “Deprecating the Observer Pattern.” (2010).
+\bibitem{reactive_walkthrough} G. Salvaneschi, A. Margara and G. Tamburrelli, "Reactive Programming: A Walkthrough," 2015 IEEE/ACM 37th IEEE International Conference on Software Engineering, Florence, 2015, pp. 953-954. 
 \end{thebibliography}
 
 \end{document}

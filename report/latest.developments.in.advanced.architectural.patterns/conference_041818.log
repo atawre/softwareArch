@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.1.13)  7 MAR 2019 00:19
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.1.13)  7 MAR 2019 01:28
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -442,38 +442,43 @@ Missing character: There is no â in font ptmr7t!
 Missing character: There is no € in font ptmr7t!
 Missing character: There is no “ in font ptmr7t!
  [3]
+! You can't use `macro parameter character #' in horizontal mode.
+l.203 ...variable. However, RP converts the line #
+                                                  2 into a constraint. The R...
+
+? 
 ! Misplaced alignment tab character &.
-l.210 \bibitem{comparison} Cerny, Tom &
+l.214 \bibitem{comparison} Cerny, Tom &
                                         J. Donahoo, Michael & Pechanec, Jiri...
 
 ? 
 ! Misplaced alignment tab character &.
-l.210 ...rison} Cerny, Tom & J. Donahoo, Michael &
+l.214 ...rison} Cerny, Tom & J. Donahoo, Michael &
                                                    Pechanec, Jiri. (2017). D...
 
 ? 
 ! Misplaced alignment tab character &.
-l.211 ...{SOA}Gold, N.E., Knight, C., Mohan, A., &
+l.215 ...{SOA}Gold, N.E., Knight, C., Mohan, A., &
                                                    Munro, M. (2004). Underst...
 
 ? 
 ! Misplaced alignment tab character &.
-l.212 \bibitem{caseStudy} Marquez, Gaston &
+l.216 \bibitem{caseStudy} Marquez, Gaston &
                                             Astudillo, Hernan. (2018). Actua...
 
 ? 
 ! You can't use `macro parameter character #' in horizontal mode.
-l.218 ...peak.telecommunity.com/DevCenter/Trellis#
+l.222 ...peak.telecommunity.com/DevCenter/Trellis#
                                                   model-view-controller-and-...
 
 ? 
 
-Underfull \hbox (badness 10000) in paragraph at lines 218--219
+Underfull \hbox (badness 10000) in paragraph at lines 222--223
 []\OT1/ptm/m/n/8 Model-View-Controller and the Ob-server Pat-tern
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 218--219
+Underfull \hbox (badness 10000) in paragraph at lines 222--223
 \OT1/ptm/m/n/8 http://peak.telecommunity.com/DevCenter/Trellismodel-view-contro
 ller-
  []
@@ -499,10 +504,10 @@ Before submitting the final camera ready copy, remember to:
 
 ] (./conference_041818.aux) ) 
 Here is how much of TeX's memory you used:
- 4342 strings out of 494847
- 62942 string characters out of 6179080
- 128177 words of memory out of 5000000
- 7606 multiletter control sequences out of 15000+600000
+ 4343 strings out of 494847
+ 62964 string characters out of 6179080
+ 128181 words of memory out of 5000000
+ 7607 multiletter control sequences out of 15000+600000
  39391 words of font info for 84 fonts, out of 8000000 for 9000
  59 hyphenation exceptions out of 8191
  41i,8n,35p,686b,269s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -512,7 +517,7 @@ b></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/t
 exlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/texmf-d
 ist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1
 /urw/times/utmri8a.pfb>
-Output written on conference_041818.pdf (4 pages, 76685 bytes).
+Output written on conference_041818.pdf (4 pages, 77522 bytes).
 PDF statistics:
  38 PDF objects out of 1000 (max. 8388607)
  26 compressed objects within 1 object stream
