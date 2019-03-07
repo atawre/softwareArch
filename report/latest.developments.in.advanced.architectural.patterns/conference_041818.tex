@@ -183,9 +183,25 @@ Today the distributed system development, with microservice architectures built 
 
 \subsection{Reactive programming}
 Reactive programming (RP) is a new paradigm that deals with the data flows and the propagation of change. It is possible to express static or dynamic data flows with ease in the reactive programming languages, and that the underlying execution model will automatically propagate changes through the data flow. For example, in a model–view–controller (MVC) architecture, RP can facilitate changes in an underlying model that are reflected automatically in an associated view \cite{mvc}. \par
-Traditionally such a task was achieved using observer pattern \cite{gof}.
-\subsubsection{Observer Pattern}
-\subsubsection{Relevance of reactive programming}
+Traditionally such a task was achieved using observer pattern \cite{gof}. This pattern is mainly used to implement distrubuted event driven systems, consisting following characteristics.
+\begin{itemize}
+\item A "subject" and "observer" are the main objects.
+\item Any change to subject is automatically propagated to the observers.
+\item Observers should be registered with the subject to receive the change notification.
+\item Subject maintains list of observers and calls update method on all of them in the event of change.
+\end {itemize}
+The observer pattern is criticized for lack of composability, inversion of the logical relation among reactive entities and limited readability \cite{observer}. Also, it can be a source of memory leaks especially when the observer object fails to unregister itself. During such a situation the observer object can not be garbage collected. \par
+
+The following pseudocode illustrates the reactive paradigm well.
+
+\begin{enumerate}
+\item clicked: Event = mouse.clicked
+\item scaledPosition: Signal[(Int,Int)] = mouse.position X 0.5
+\item lastClick: Signal[(Int,Int)] = \\
+      clicked.snapshot(scaledPosition)
+\end{enumerate}
+
+
 
 \subsection{Resilient software development}
 
@@ -201,6 +217,7 @@ Traditionally such a task was achieved using observer pattern \cite{gof}.
 \bibitem{containerPatterns}Brendan Burns and David Oppenheimer. 2016. Design patterns for container-based distributed systems. In Proceedings of the 8th USENIX Conference on Hot Topics in Cloud Computing (HotCloud'16). USENIX Association, Berkeley, CA, USA, 108-113.
 \bibitem{mvc}Model-View-Controller and the Observer Pattern http://peak.telecommunity.com/DevCenter/Trellis#model-view-controller-and-the-observer-pattern
 \bibitem{gof} Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides (1994). Design Patterns: Elements of Reusable Object-Oriented Software. Addison Wesley. pp. 293ff. ISBN 0-201-63361-2.
+\bibitem{observer} Maier, Ingo et al. “Deprecating the Observer Pattern.” (2010).
 \end{thebibliography}
 
 \end{document}
