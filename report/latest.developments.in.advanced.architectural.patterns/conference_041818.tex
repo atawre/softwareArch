@@ -182,9 +182,8 @@ The containerized applications need to account for failure too. It should have a
 Today the distributed system development, with microservice architectures built from containerized software components \cite{containerPatterns} is dominating the industry.
 
 \subsection{Reactive programming}
-
-Far more efficient compared to virtual machines.
-
+Reactive programming (RP) is a new paradigm that deals with the data flows and the propagation of change. It is possible to express static or dynamic data flows with ease in the reactive programming languages, and that the underlying execution model will automatically propagate changes through the data flow. For example, in a model–view–controller (MVC) architecture, RP can facilitate changes in an underlying model that are reflected automatically in an associated view \cite{mvc}. \par
+Traditionally such a task was achieved using observer pattern \cite{gof}.
 \subsubsection{Observer Pattern}
 \subsubsection{Relevance of reactive programming}
 
@@ -200,7 +199,8 @@ Far more efficient compared to virtual machines.
 \bibitem{lxc} LxC Containers.  https://linuxcontainers.org/lxc/introduction/
 \bibitem{kubernetes} Kubernetes. https://kubernetes.io/
 \bibitem{containerPatterns}Brendan Burns and David Oppenheimer. 2016. Design patterns for container-based distributed systems. In Proceedings of the 8th USENIX Conference on Hot Topics in Cloud Computing (HotCloud'16). USENIX Association, Berkeley, CA, USA, 108-113.
-
+\bibitem{mvc}Model-View-Controller and the Observer Pattern http://peak.telecommunity.com/DevCenter/Trellis#model-view-controller-and-the-observer-pattern
+\bibitem{gof} Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides (1994). Design Patterns: Elements of Reusable Object-Oriented Software. Addison Wesley. pp. 293ff. ISBN 0-201-63361-2.
 \end{thebibliography}
 
 \end{document}
