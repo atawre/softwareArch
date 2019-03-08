@@ -208,6 +208,29 @@ The mouse position is scaled by 0.5 and saved to scaledPosition variable. On eve
 \end{itemize}
 
 \subsection{Resilient software development}
+With the advent of cloud computing, microservices and containers technology, applications are growing exponentially. The providers need to account node failure is commonplace thing for such a large scale applications. The application failure directly translate into loss of revenue. Application developer must consider a good balance between the cost of being resilient \cite{Hornsby} and the possible loss of revenue. The resilience can be achieved using some of the following patterns, which are becoming more common place in software architectures nowadays.
+\par \textit{Redundancy} : Increasing the availability by deploying several instances, possibly in different zones or regions, e.g. AWS availability zones.
+\par \textit{Autoscaling} : Scaling the resources dynamically according to the demand as opposed to doing it manually is auto scaling. E.g. Amazon's gold AMI are pre-configured instances which can be deployed on demand. Another example is Dockerfile which helps get rid of configuration scripts and deploy containerized application automatically.
+\par \textit{Infrastructure as code} : It is process of managing the computer data centers using configuration templates. It is also referred to as Infrastructure as a Service (IaaS). In the event like accidental deletion, templates provide quick way to recover the infrastructure. 
+
+\par \textit{Immutable infrastructure} : Immutable components are replaced for every deployment, rather than being updated in place.
+\begin{itemize}
+\item No updates should ever be performed on live systems
+\item Always start from a new instance of the resource being provisioned
+\end{itemize}
+Immutable infrastructure promotes canary deployment i.e., deployement to a smallest possible set. If the such deployement fails, immediate rollback is possible.
+
+\par \textit{Stateless application} :
+Autoscaling and immutable infrastructure requires the application to be stateless. The application must treat all the client requests independent of earlier requests. It should not store any information on disk or in memory. However, state sharing within the autoscaling group is conducted using in-memory caching mechanism like Redis, Memchached etc.
+
+\par \textit{Cascading failures} :
+A single failure can trigger multiple others failures impacting the availability. E.g. if an overloaded cluster goes down, the traffic would be redirected to another cluster. This in turn overloads the new cluster, causing more failures. Following techniques are employed to handle such failures.
+\begin{itemize}
+\item \textit{Timing out} faster may mean the service is degraded instead of failing.
+\item Due to transient errors, clients may resend the same requests. Making such requests \textit{idempotent} can solve the failures.
+\item \textit{Degradation} implies that instead of failing, your application degrades to a lower-quality service. It consist of service that is easier to compute and deliver to the user.
+\item \textit{Dropping} un-important traffic should help certain failure cases.
+\end{itemize}
 
 \begin{thebibliography}{00}
 \bibitem{microservice} J. Lewis and M. Fowler,Microservices-A definition of this new architec-tural term, 2014.  https://martinfowler.com/articles/microservices.html
@@ -223,6 +246,7 @@ The mouse position is scaled by 0.5 and saved to scaledPosition variable. On eve
 \bibitem{gof} Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides (1994). Design Patterns: Elements of Reusable Object-Oriented Software. Addison Wesley. pp. 293ff. ISBN 0-201-63361-2.
 \bibitem{observer} Maier, Ingo et al. “Deprecating the Observer Pattern.” (2010).
 \bibitem{reactive_walkthrough} G. Salvaneschi, A. Margara and G. Tamburrelli, "Reactive Programming: A Walkthrough," 2015 IEEE/ACM 37th IEEE International Conference on Software Engineering, Florence, 2015, pp. 953-954. 
+\bibitem{Hornsby} Adrian Hornsby, Patterns for resilient architecture, https://aws.amazon.com/developer/community/evangelists/adrian-hornsby/
 \end{thebibliography}
 
 \end{document}
