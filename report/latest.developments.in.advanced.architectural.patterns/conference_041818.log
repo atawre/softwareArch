@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2018.8.14)  8 MAR 2019 16:18
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2018.8.14)  9 MAR 2019 21:05
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -331,7 +331,11 @@ Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1358.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1359.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1360.
 )
-(./conference_041818.aux)
+(./conference_041818.aux
+
+LaTeX Warning: Label `hytrust' multiply defined.
+
+)
 \openout1 = `conference_041818.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 12.
@@ -348,8 +352,7 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 12.
 LaTeX Font Info:    ... okay on input line 12.
 LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 12.
 LaTeX Font Info:    Try loading font information for TS1+cmr on input line 12.
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd
+ (/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    ... okay on input line 12.
@@ -429,55 +432,79 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 
 ]
-Underfull \hbox (badness 4886) in paragraph at lines 115--116
+Underfull \hbox (badness 4886) in paragraph at lines 114--115
 []\OT1/ptm/m/n/10 Knowledge sources be-ing in-de-pen-dent, al-lows for
  []
 
-[2]
+<SOA.png, id=11, 596.2275pt x 497.86pt>
+File: SOA.png Graphic file (type png)
+ <use SOA.png>
+Package pdftex.def Info: SOA.png used on input line 138.
+(pdftex.def)             Requested size: 238.48677pt x 199.14047pt.
+ [2]
+<Microservice.png, id=16, 947.54pt x 481.8pt>
+File: Microservice.png Graphic file (type png)
+ <use Microservice.png>
+Package pdftex.def Info: Microservice.png used on input line 169.
+(pdftex.def)             Requested size: 236.88441pt x 120.44969pt.
+ [3 <./SOA.png> <./Microservice.png>] <container.png, id=22, 706.64pt x 613.291
+24pt>
+File: container.png Graphic file (type png)
+
+<use container.png>
+Package pdftex.def Info: container.png used on input line 187.
+(pdftex.def)             Requested size: 211.99364pt x 183.98878pt.
 Missing character: There is no ‚ in font ptmr7t!
 Missing character: There is no Ä in font ptmr7t!
 Missing character: There is no ì in font ptmr7t!
 Missing character: There is no ‚ in font ptmr7t!
 Missing character: There is no Ä in font ptmr7t!
 Missing character: There is no ì in font ptmr7t!
- [3]
+
 ! You can't use `macro parameter character #' in horizontal mode.
-l.203 ...variable. However, RP converts the line #
+l.224 ...variable. However, RP converts the line #
                                                   2 into a constraint. The R...
 
 ? 
+[4 <./container.png>] <HytrustAppliance.png, id=27, 904.37875pt x 430.60875pt>
+File: HytrustAppliance.png Graphic file (type png)
+
+<use HytrustAppliance.png>
+Package pdftex.def Info: HytrustAppliance.png used on input line 260.
+(pdftex.def)             Requested size: 271.31572pt x 129.18361pt.
+ [5 <./HytrustAppliance.png>]
 ! Misplaced alignment tab character &.
-l.237 \bibitem{comparison} Cerny, Tom &
+l.300 \bibitem{comparison} Cerny, Tom &
                                         J. Donahoo, Michael & Pechanec, Jiri...
 
 ? 
 ! Misplaced alignment tab character &.
-l.237 ...rison} Cerny, Tom & J. Donahoo, Michael &
+l.300 ...rison} Cerny, Tom & J. Donahoo, Michael &
                                                    Pechanec, Jiri. (2017). D...
 
 ? 
 ! Misplaced alignment tab character &.
-l.238 ...{SOA}Gold, N.E., Knight, C., Mohan, A., &
+l.301 ...{SOA}Gold, N.E., Knight, C., Mohan, A., &
                                                    Munro, M. (2004). Underst...
 
 ? 
 ! Misplaced alignment tab character &.
-l.239 \bibitem{caseStudy} Marquez, Gaston &
+l.302 \bibitem{caseStudy} Marquez, Gaston &
                                             Astudillo, Hernan. (2018). Actua...
 
 ? 
 ! You can't use `macro parameter character #' in horizontal mode.
-l.245 ...peak.telecommunity.com/DevCenter/Trellis#
+l.308 ...peak.telecommunity.com/DevCenter/Trellis#
                                                   model-view-controller-and-...
 
 ? 
 
-Underfull \hbox (badness 10000) in paragraph at lines 245--246
+Underfull \hbox (badness 10000) in paragraph at lines 308--309
 []\OT1/ptm/m/n/8 Model-View-Controller and the Ob-server Pat-tern
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 245--246
+Underfull \hbox (badness 10000) in paragraph at lines 308--309
 \OT1/ptm/m/n/8 http://peak.telecommunity.com/DevCenter/Trellismodel-view-contro
 ller-
  []
@@ -488,14 +515,26 @@ Missing character: There is no ú in font ptmr7t!
 Missing character: There is no ‚ in font ptmr7t!
 Missing character: There is no Ä in font ptmr7t!
 Missing character: There is no ù in font ptmr7t!
-[4]
-Underfull \hbox (badness 10000) in paragraph at lines 249--250
+
+Underfull \hbox (badness 10000) in paragraph at lines 312--313
 []\OT1/ptm/m/n/8 Adrian Hornsby, Pat-terns for re-silient ar-chi-tec-ture,
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 249--250
+Underfull \hbox (badness 10000) in paragraph at lines 312--313
 \OT1/ptm/m/n/8 https://aws.amazon.com/developer/community/evangelists/adrian-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 315--316
+[]\OT1/ptm/m/n/8 Hytrust Dat-a-con-trol. https://www.hytrust.com/products/datac
+ontrol-
+ []
+
+
+Underfull \hbox (badness 2762) in paragraph at lines 316--317
+[]\OT1/ptm/m/n/8 P2P file shar-ing. https://www.makeuseof.com/tag/p2p-peer-peer
+-file-
  []
 
 
@@ -509,27 +548,30 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[5
+[6
 
-] (./conference_041818.aux) ) 
+] (./conference_041818.aux)
+
+LaTeX Warning: There were multiply-defined labels.
+
+ ) 
 Here is how much of TeX's memory you used:
- 4385 strings out of 493304
- 63379 string characters out of 6139871
- 134674 words of memory out of 5000000
- 7784 multiletter control sequences out of 15000+600000
+ 4414 strings out of 493304
+ 63851 string characters out of 6139871
+ 134758 words of memory out of 5000000
+ 7808 multiletter control sequences out of 15000+600000
  39391 words of font info for 84 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
  38i,8n,35p,686b,269s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips/bas
-e/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pf
-b></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/t
-exlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/texmf-d
-ist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1
-/urw/times/utmri8a.pfb>
-Output written on conference_041818.pdf (5 pages, 80177 bytes).
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
+e/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf
+-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/typ
+e1/urw/times/utmbi8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/u
+tmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on conference_041818.pdf (6 pages, 207600 bytes).
 PDF statistics:
- 41 PDF objects out of 1000 (max. 8388607)
- 28 compressed objects within 1 object stream
+ 53 PDF objects out of 1000 (max. 8388607)
+ 31 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 21 words of extra memory for PDF output out of 10000 (max. 10000000)
 

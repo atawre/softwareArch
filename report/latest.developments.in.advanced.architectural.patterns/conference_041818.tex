@@ -40,10 +40,10 @@ SOA, microservice, reactive programming, resilient software
 \end{IEEEkeywords}
 
 \section{Architectural design patterns}
-Large enterprise needs software that scales with ever chaging and increasing needs of the business. Selecting the right architecture before diving into the actual work is crucial to the success of the application and enterprise. This section explores various architectural patterns used in the industry. The pros and cons will be discussed for each of the pattern.
+Large enterprise needs software that scales with ever changing and increasing needs of the business. Selecting the right architecture before diving into the real work is crucial to the success of the application and enterprise. This section explores various architectural patterns used in the industry. The pros and cons are discussed for each of the pattern.
 
 \subsection{Layered architecture}
-It is the most common architecture style, that organize similar modules into horizontal layers. The layers are independent of others and inteact using exported APIs. An application can be designed using any number of layers. The network protocol stack is a good example of layered architecture. The in upper layer is transmitted to lower layers using encapsulated packets. A layer don't have to know the inner working of other layer and communication happens through a set of APIs exposed by each layer. Another example of bussiness application, that is divided into presentation, logic and data tiers. Following of some of the benefits offered by this architecture.
+It is the most common architecture style, that organize similar modules into horizontal layers. The layers are independent of others and interact using exported APIs. An application can be designed using any number of layers. The network protocol stack is a good example of layered architecture. The in upper layer is transmitted to lower layers using encapsulated packets. A layer don't have to know the inner working of other layer and communication happens through a set of APIs exposed by each layer. Another example of business application, that is divided into presentation, logic and data tiers. Following of some of the benefits offered by this architecture.
 \begin{itemize}
 \item Layers can be developed and tested independently.
 \item Changes made in one layer doesn't affect the other layer, hence maintainable.
@@ -51,7 +51,7 @@ It is the most common architecture style, that organize similar modules into hor
 \item Lower layers have no dependency on higher layer and hence reusable.
 \end{itemize}
 
-The disadvantages can be summarized as follow.
+The disadvantages can be summarized as follows.
 \begin{itemize}
 \item A change to any component may trigger a redeployment of the entire application.
 \item Each layer can have separate physical deployment or an entire application can be replicated. It is too coarse grained from deployment perspective.
@@ -67,24 +67,23 @@ This approach is suitable for large applications that can be broken down to mult
 \item Adding a new step is easy by adding a new filter and adding it to existing pipe stream.
 \item It is easier to reuse of filters doing generic actions.
 \item Promotes concurrency of different filters do not depend on each other.
-\item The errors gets propogated across the filters, which is a downside of this architecture.
+\item The errors gets propagated across the filters, which is a downside of this architecture.
 \item A broken filter leads to a complete broken pipe.
 \end{itemize}
 
 \subsection{Peer to peer architecture}
-A peer-to-peer (P2P) architecture consists of a decentralized network of peers i.e. nodes. Unline client-server architecture, a node in this architecture can act both as a server and a client.
-The workload is split into small chunks that can be reassembled later, allowing peers to work simultaneously on a task. E.g. P2P file sharing, where a file is split into chunks that allows many chunks to be downloaded from diffrent peers at the same time.
+A peer-to-peer (P2P) architecture \cite{peer2peer} consists of a decentralized network of peers i.e. nodes. Unlike client-server architecture, a node in this architecture can act both as a server and a client. The workload is split into small chunks that can be reassembled later, allowing peers to work simultaneously on a task. E.g. P2P file sharing, where a file is split into chunks that allows many chunks to be downloaded from different peers at the same time.
 \begin{itemize}
 \item Need for centralized server is eliminated.
 \item There is no single point of failure, unless the number of peers are too few.
 \item The increase in number of peers can be handled easily i.e., scalable.
 \item The model is prone to security issue, as an infected peer can affect the whole network.
-\item Fairless garuntees are difficult to enforce as many leeches could benefit free riders.
+\item Fairness guarantees are difficult to enforce as many leeches could benefit free riders.
 \item Instant messaging, file sharing, collaboration apps use P2P architecture. E.g. Bitcoin, BitTorrent, napster etc.
 \end{itemize}
 
 \subsection{Event based architecture}
-The callbacks mechanism describes this architecture well. It consists of source, listener, and a bus. The event source send a message i.e. an event on the bus to other component. The listener responds by performing some action. The components comminicate only via the event bus. The linux device driver interrupt handlers employ this mechanism. 
+The callbacks mechanism describes this architecture well. It consists of source, listener, and a bus. The event source send a message i.e. an event on the bus to other component. The listener responds by performing some action. The components communicate only via the event bus. The linux device driver interrupt handlers employ this mechanism. 
 \begin{itemize}
 \item Changing name or type of an even requires changes to the listener.
 \item Too many event sources or listeners lead to bottleneck for the bus.
@@ -101,7 +100,7 @@ It consists of a program to be executed, an interpreter which runs such a progra
 \item Allows portability across various platforms.
 \item Debugging become easier.
 \item An extra level of indirection makes execution slower.
-\item Interpreter can gaurd against malicious instruction 
+\item Interpreter can guard against malicious instruction 
 \end{itemize}
 
 \subsection{Blackboard}
@@ -110,14 +109,15 @@ It is similar to boardroom where people solve the problem using a whiteboard. Th
 \item Efficient scheduling of tasks and resource management across a distributed network.
 \item Better suited when a problem can be split into multiple sub-problems.
 \item Not always easy to break down a task into subproblems.
-\item Everything is shared and can cause unwated information flows.
+\item Everything is shared and can cause unwanted information flows.
 \item Controller design can become overly complex and unmaintainable.
 \item Knowledge sources being independent, allows for reusability.
 \end{itemize}
 
-\subsection{Publish Subscribe Architecture}
-\subsection{Micro Kernel Architecture}
-This pattern resembles the microKernel operating systems, which implement basic minimal functionality as a kernel. 
+\subsection{Microkernel Architecture}
+Microkernel \cite{microkernel} is a typical Operating System architecture. Minix \cite{minix} is a good example for this. The idea is to keep the core minimal functionality in kernel. The platform dependent code can be implemented as internal servers, e.g. device drivers. It might consist of few external servers for additional functionality like file-systems, memory management etc. Applications interact via adapter, which is a glue between external servers and the applications. This allows changing external servers without affecting applications.\par
+The userland applications like eclipse editor is a simple example of microkernel architecture. Minimal functionality is provided by the basic package. Additional plung-ins make it feature rich and production ready. Similarly the internet browser is an example of this pattern which mainly uses plung-ins to enhance functionality.
+
 \section{New architectural styles}
 The monolithic applications causes lot of bloated code with dependencies and slower deployment cycles. This also leads to more buggy applications.
 All such issues leads to newer architectural paradigm shift, which is described in the following subsections. Following patterns are discussed exclusively in this context.
@@ -130,16 +130,23 @@ All such issues leads to newer architectural paradigm shift, which is described 
 \end{itemize}
 
 \subsection{SOA}
-SOA \cite{SOA} allows application to be modularized into services. A centralized component is responsible for the service integration and comminication.
+SOA \cite{SOA} allows application to be modularized into services. A centralized component is responsible for the service integration and communication.
 This is achieved using an Enterprise service bus (ESB), which acts as an \textit{orchestrator}. The data model for SOA applications evolve by an agreement between many services.
-However, such a canonical data model being shared by many services, which limits the evolution. The services often reflect the comminication pattern of the organization, a.k.a. Conway's law \cite{conway}. \par 
-The SOA is often implemented as web services which use following communication methods.
+However, such a canonical data model being shared by many services, which limits the evolution. The services often reflect the communication pattern of the organization, a.k.a. Conway's law \cite{conway}. Figure \ref{soaBlockDiagram} depicts the SOA block diagram.
+
+\begin{figure}[htbp]
+\centerline{\includegraphics[scale=0.4]{SOA.png}}
+\caption{SOA block diagram.}
+\label{soaBlockDiagram}
+\end{figure}
+
+\par The SOA is often implemented as web services which use following communication methods.
 \begin{itemize}
 \item Simple Object Access Protocol (SOAP) for synchronous communication with other web services, typically over HTTP. Components that use SOAP are often described in a Web Services Description Language (WSDL). The WSDL is an XML-based interface description language that is used for describing the functionality offered by a web service. 
 \item The REpresentational State Transfer (REST) protocol too can be used for basic request/response operations between the services.
 \end{itemize}
 
-Most organizations need to deal with existing legacy applications before adopting the SOA architecture. The key bussiness processes depend on such legacy systems and hence a step by step solution must be adopted to move towards SOA. Following are some of the options strategies to deal with the change.
+Most organizations need to deal with existing legacy applications before adopting the SOA architecture. The key business processes depend on such legacy systems and hence a step by step solution must be adopted to move towards SOA. Following are some of the options strategies to deal with the change.
 \begin{itemize}
 \item Use commercial off the shelf components to replace existing system. This can be more costly in future.
 \item Wrap the current legacy system with a middleware that can offer the legacy system interface through a Web service.
@@ -152,28 +159,42 @@ Microservices \cite{microservice} allows applications to be made up of small, se
 \item \textit{Componentization} : Services are independent units that communicate with other services using web requests or remote procedure calls.
 \item \textit{Business capabilities} :  Services represent the business capability, with responsibility for a complete stack.
 \item \textit{Product rather than projects} : Microservices treat services as products and claim ownership. The ongoing maintainance requires complying with business needs.
-\item \textit{Dumb pipes and smart endpoints} : Microservices do not use ESBs. The services are intelligent and communication channel is userd merely for message passing. The communicationnication channel does not implement any service functionality i.e., the channel implementation is simple.
-\item \textit{Decentralized governance} : There is no orchestrator, instead it evolves towards choreagraphy and event collaboration.
+\item \textit{Dumb pipes and smart endpoints} : Microservices do not use ESBs. The services are intelligent and communication channel is userd merely for message passing. The communication channel does not implement any service functionality i.e., the channel implementation is simple.
+\item \textit{Decentralized governance} : There is no orchestrator, instead it evolves towards choreography and event collaboration.
 \item \textit{Bounded context} : Domain-driven design complex domain up into multiple bounded contexts and maps out the relationships between them. This leads each service to have its own localized version of data model promoting loose coupling.
 \end{itemize}
+Figure \ref{soaBlockDiagram} depicts the SOA block diagram.
 
-Microservices architecture constatly introduce new services that requires DevOps to ensure component updates in production environment. 
+\begin{figure}[htbp]
+\centerline{\includegraphics[scale=0.25]{Microservice.png}}
+\caption{Microservice block diagram.}
+\label{Microservice}
+\end{figure}
+
+Microservices architecture constantly introduce new services that requires DevOps to ensure component updates in production environment. 
 It has disadvantages such as code duplication, interfaces mismatch, operations overhead and the challenge of continuous testing of multiple systems. However, the benefits of creating loosely coupled components by independent teams using a variety of languages and tools far outweigh the disadvantages. Some of examples of microservice adoption are listed below.
 
 \begin{itemize}
 \item \textit{Netflix} : Moved away from single war file to full fledged microservice approach.
 \item \textit{The gaurdian} : This website maintains their core monolithic system but use microservice for new components.
-\item \textit{Gilt groupe} : Uses massive microservice approach to their shopping site, allowng various teams working on different services.
+\item \textit{Gilt groupe} : Uses massive microservice approach to their shopping site, allowing various teams working on different services.
 \end {itemize}
 
 \subsection{Containers}
-Containers \cite{lxc} \cite{kubernetes} are often termed as light weight virtual machines. An example is lxc containers built for linux systems. They provides an isolated environment with exclusive access to resources like memory, network, storage etc. The following components enable the containers to provide isolation and bare-metal performance.
+Containers \cite{lxc} \cite{kubernetes} are often termed as light weight virtual machines. An example is lxc containers built for linux systems. They provides an isolated environment with exclusive access to resources like memory, network, storage etc. The following components enable the containers to provide isolation and bare-metal performance. Figure \ref{containerBlockDiagram} shows block diagram of the containers.
+
+\begin{figure}[htbp]
+\centerline{\includegraphics[scale=0.3]{container.png}}
+\caption{Container block diagram.}
+\label{containerBlockDiagram}
+\end{figure}
+
 \begin{itemize}
 \item \textit{Kernel namespaces} --- A namespace wraps a global system resource making it appear to the processes as their own isolated instance.
 \item \textit{SELinux} --- provides access control
 \item \textit{SeComp} --- restrict malicious usage of system calls
 \item \textit{chroot} --- allows process to change root i.e., restricts process to specific directory structure.
-\item \textit{Kernel capabilities} --- Distinguish between priviledged and un-priviledged process and allow access accordingly
+\item \textit{Kernel capabilities} --- Distinguish between privileged  and un-privileged  process and allow access accordingly
 \item \textit{CGroups} --- Limits, accounts for and isolates process resource usage.
 \end{itemize}
 
@@ -183,7 +204,7 @@ Today the distributed system development, with microservice architectures built 
 
 \subsection{Reactive programming}
 Reactive programming (RP) is a new paradigm that deals with the data flows and the propagation of change. It is possible to express static or dynamic data flows with ease in the reactive programming languages, and that the underlying execution model will automatically propagate changes through the data flow. For example, in a model–view–controller (MVC) architecture, RP can facilitate changes in an underlying model that are reflected automatically in an associated view \cite{mvc}. \par
-Traditionally such a task was achieved using observer pattern \cite{gof}. This pattern is mainly used to implement distrubuted event driven systems, consisting following characteristics.
+Traditionally such a task was achieved using observer pattern \cite{gof}. This pattern is mainly used to implement distributed event driven systems, consisting following characteristics.
 \begin{itemize}
 \item A "subject" and "observer" are the main objects.
 \item Any change to subject is automatically propagated to the observers.
@@ -232,8 +253,50 @@ A single failure can trigger multiple others failures impacting the availability
 \item \textit{Dropping} un-important traffic should help certain failure cases.
 \end{itemize}
 
+\subsection{Case Study : Hytrust Data Control}
+This section briefly explain the Hytrust Datacontrol \cite{hytrust} appliance and the architectural analysis is presented as well.
+The UI, Keycontrol Server and encryption agents on client machines are three main components of the Hytrust appliance. Figure \ref{hytrustBlockDiagram} shows the various components and their interaction.
+\begin{figure}[htbp]
+\centerline{\includegraphics[scale=0.3]{HytrustAppliance.png}}
+\caption{Hytrust data control block diagram.}
+\label{hytrustBlockDiagram}
+\end{figure}
+
+The client agent requests the encryption keys from Keycontrol appliance using REST API. These keys are used to encrypt the client virtual machine (VM) partitions.
+Client can do following actions:
+\begin{itemize}
+\item Create a set of Virtual machine i.e. CVMSet
+\item Register/Unregister a VM in the CVMSet.
+\item Encrypt/Decrypt a partition, applicable to registered VMs
+\item Rekey the partition i.e. change the partition encryption key for security reasons.
+\item Create a shared folder on AWS for all the VMs registered in a particular CVMset.
+\item Add/remove files to shared folder with specific encryption keys.
+\item CVMset have authorized user requiring the Keycontrol to implement access control.
+\item User/Group creation/deletion is supported via UI.
+\end{itemize}
+
+\textit{Availability} is ensured by running two instances of the Keycontrol appliance in master-slave mode.
+In case of failure the roles are switched for the master and the slave nodes. 
+\par\textit{Consistency} of database is maintained by replicating the changes across the two node cluster. However, this is tightly coupled with the Keycontrol and errors are hard to debug. 
+\par\textit{Load balancing} is achieved by allowing each client to support preferred node in the cluster, though initial registration should happen through active node only.
+\par\textit{Caching} the keyid on client side for the files encrypted in the AWS cloud improves response time.
+\par\textit{Autodeployment} is achieved by keeping the Golden AMIs for Keycontrol appliance.
+\par\textit{Availability} can be truly enhanced by deploying the cluster nodes across different zone in Amazon/Azure/IBM cloud.
+\par\textit{Content delivery network (CDN)} can be used to cache the static website content. It is useful especially when the client and the appliance belong to different availability zones.
+\par Despite being a high performant appliance, the DB errors can lock-down the whole appliance and client becomes tainted. Microservices approach should be a real help here. The database should be divided into units as per business needs making it available to respective microservice i.e. webservice. Completely modularized server is hard to achieve, however the keycontrol can be divided into following components.
+\begin{itemize}
+\item UI component
+\item User/Group creation/deletion
+\item Encryption Key generation
+\item CVMset creation/deletion
+\item VM registration etc.
+\end{itemize}
+
+\par\textit{Testing} large applications is often a challenge. Simulating thousand of clients would require huge resources i.e., memory, cpu. However, containers can be configured to run the client agents and perform desired actions. Each container can be configured to have an IP and mac address to simulates actual client requests. Using Dockerfile will further simplify the process of testbed creation and automated tests.
+\par Analyzing existing applications from architectural perspective truely opens up new alternatives for future designs. The long term benefits of getting architecturally correct model, makes the study of the software architecture more compelling.
+
 \begin{thebibliography}{00}
-\bibitem{microservice} J. Lewis and M. Fowler,Microservices-A definition of this new architec-tural term, 2014.  https://martinfowler.com/articles/microservices.html
+\bibitem{microservice} J. Lewis and M. Fowler,Microservices-A definition of this new architectural term, 2014.  https://martinfowler.com/articles/microservices.html
 \bibitem{comparison} Cerny, Tom & J. Donahoo, Michael & Pechanec, Jiri. (2017). Disambiguation and Comparison of SOA, Microservices and Self-Contained Systems. 228-235. 10.1145/3129676.3129682.
 \bibitem{SOA}Gold, N.E., Knight, C., Mohan, A., & Munro, M. (2004). Understanding service-oriented software. IEEE Software, 21, 71-77.
 \bibitem{caseStudy} Marquez, Gaston & Astudillo, Hernan. (2018). Actual Use of Architectural Patterns in Microservices-based Open Source Projects.
@@ -247,185 +310,11 @@ A single failure can trigger multiple others failures impacting the availability
 \bibitem{observer} Maier, Ingo et al. “Deprecating the Observer Pattern.” (2010).
 \bibitem{reactive_walkthrough} G. Salvaneschi, A. Margara and G. Tamburrelli, "Reactive Programming: A Walkthrough," 2015 IEEE/ACM 37th IEEE International Conference on Software Engineering, Florence, 2015, pp. 953-954. 
 \bibitem{Hornsby} Adrian Hornsby, Patterns for resilient architecture, https://aws.amazon.com/developer/community/evangelists/adrian-hornsby/
+\bibitem{microkernel} Jorrit N. Herder , TOWARDS A TRUE MICROKERNEL OPERATING SYSTEM, http://www.minix3.org/theses/herder-true-microkernel.pdf
+\bibitem{minix} The minix OS. https://www.minix3.org/
+\bibitem{hytrust} Hytrust Datacontrol. https://www.hytrust.com/products/datacontrol-workload-encryption/
+\bibitem{peer2peer} P2P file sharing. https://www.makeuseof.com/tag/p2p-peer-peer-file-sharing-works/
 \end{thebibliography}
 
 \end{document}
 
-%\vspace{12pt}
-% \color{red}
-% IEEE conference templates contain guidance text for composing and formatting conference papers. Please ensure that all template text is removed from your conference paper prior to submission to the conference. Failure to remove the template text from your paper may result in your paper not being published.
-
-
-% \subsection{Units}
-% \begin{itemize}
-% \item Use either SI (MKS) or CGS as primary units. (SI units are encouraged.) English units may be used as secondary units (in parentheses). An exception would be the use of English units as identifiers in trade, such as ``3.5-inch disk drive''.
-% \item Avoid combining SI and CGS units, such as current in amperes and magnetic field in oersteds. This often leads to confusion because equations do not balance dimensionally. If you must use mixed units, clearly state the units for each quantity that you use in an equation.
-% \item Do not mix complete spellings and abbreviations of units: ``Wb/m\textsuperscript{2}'' or ``webers per square meter'', not ``webers/m\textsuperscript{2}''. Spell out units when they appear in text: ``. . . a few henries'', not ``. . . a few H''.
-% \item Use a zero before decimal points: ``0.25'', not ``.25''. Use ``cm\textsuperscript{3}'', not ``cc''.)
-% \end{itemize}
-
-% \subsection{Equations}
-% Number equations consecutively. To make your 
-% equations more compact, you may use the solidus (~/~), the exp function, or 
-% appropriate exponents. Italicize Roman symbols for quantities and variables, 
-% but not Greek symbols. Use a long dash rather than a hyphen for a minus 
-% sign. Punctuate equations with commas or periods when they are part of a 
-% sentence, as in:
-% \begin{equation}
-% a+b=\gamma\label{eq}
-% \end{equation}
-
-% Be sure that the 
-% symbols in your equation have been defined before or immediately following 
-% the equation. Use ``\eqref{eq}'', not ``Eq.~\eqref{eq}'' or ``equation \eqref{eq}'', except at 
-% the beginning of a sentence: ``Equation \eqref{eq} is . . .''
-
-% \subsection{\LaTeX-Specific Advice}
-
-% Please use ``soft'' (e.g., \verb|\eqref{Eq}|) cross references instead
-% of ``hard'' references (e.g., \verb|(1)|). That will make it possible
-% to combine sections, add equations, or change the order of figures or
-% citations without having to go through the file line by line.
-
-% Please don't use the \verb|{eqnarray}| equation environment. Use
-% \verb|{align}| or \verb|{IEEEeqnarray}| instead. The \verb|{eqnarray}|
-% environment leaves unsightly spaces around relation symbols.
-
-% Please note that the \verb|{subequations}| environment in {\LaTeX}
-% will increment the main equation counter even when there are no
-% equation numbers displayed. If you forget that, you might write an
-% article in which the equation numbers skip from (17) to (20), causing
-% the copy editors to wonder if you've discovered a new method of
-% counting.
-
-% {\BibTeX} does not work by magic. It doesn't get the bibliographic
-% data from thin air but from .bib files. If you use {\BibTeX} to produce a
-% bibliography you must send the .bib files. 
-
-% {\LaTeX} can't read your mind. If you assign the same label to a
-% subsubsection and a table, you might find that Table I has been cross
-% referenced as Table IV-B3. 
-
-% {\LaTeX} does not have precognitive abilities. If you put a
-% \verb|\label| command before the command that updates the counter it's
-% supposed to be using, the label will pick up the last counter to be
-% cross referenced instead. In particular, a \verb|\label| command
-% should not go before the caption of a figure or a table.
-
-% Do not use \verb|\nonumber| inside the \verb|{array}| environment. It
-% will not stop equation numbers inside \verb|{array}| (there won't be
-% any anyway) and it might stop a wanted equation number in the
-% surrounding equation.
-
-% \subsection{Some Common Mistakes}\label{SCM}
-% \begin{itemize}
-% \item The word ``data'' is plural, not singular.
-% \item The subscript for the permeability of vacuum $\mu_{0}$, and other common scientific constants, is zero with subscript formatting, not a lowercase letter ``o''.
-% \item In American English, commas, semicolons, periods, question and exclamation marks are located within quotation marks only when a complete thought or name is cited, such as a title or full quotation. When quotation marks are used, instead of a bold or italic typeface, to highlight a word or phrase, punctuation should appear outside of the quotation marks. A parenthetical phrase or statement at the end of a sentence is punctuated outside of the closing parenthesis (like this). (A parenthetical sentence is punctuated within the parentheses.)
-% \item A graph within a graph is an ``inset'', not an ``insert''. The word alternatively is preferred to the word ``alternately'' (unless you really mean something that alternates).
-% \item Do not use the word ``essentially'' to mean ``approximately'' or ``effectively''.
-% \item In your paper title, if the words ``that uses'' can accurately replace the word ``using'', capitalize the ``u''; if not, keep using lower-cased.
-% \item Be aware of the different meanings of the homophones ``affect'' and ``effect'', ``complement'' and ``compliment'', ``discreet'' and ``discrete'', ``principal'' and ``principle''.
-% \item Do not confuse ``imply'' and ``infer''.
-% \item The prefix ``non'' is not a word; it should be joined to the word it modifies, usually without a hyphen.
-% \item There is no period after the ``et'' in the Latin abbreviation ``et al.''.
-% \item The abbreviation ``i.e.'' means ``that is'', and the abbreviation ``e.g.'' means ``for example''.
-% \end{itemize}
-% An excellent style manual for science writers is \cite{b7}.
-
-% \subsection{Authors and Affiliations}
-% \textbf{The class file is designed for, but not limited to, six authors.} A 
-% minimum of one author is required for all conference articles. Author names 
-% should be listed starting from left to right and then moving down to the 
-% next line. This is the author sequence that will be used in future citations 
-% and by indexing services. Names should not be listed in columns nor group by 
-% affiliation. Please keep your affiliations as succinct as possible (for 
-% example, do not differentiate among departments of the same organization).
-
-% \subsection{Identify the Headings}
-% Headings, or heads, are organizational devices that guide the reader through 
-% your paper. There are two types: component heads and text heads.
-
-% Component heads identify the different components of your paper and are not 
-% topically subordinate to each other. Examples include Acknowledgments and 
-% References and, for these, the correct style to use is ``Heading 5''. Use 
-% ``figure caption'' for your Figure captions, and ``table head'' for your 
-% table title. Run-in heads, such as ``Abstract'', will require you to apply a 
-% style (in this case, italic) in addition to the style provided by the drop 
-% down menu to differentiate the head from the text.
-
-% Text heads organize the topics on a relational, hierarchical basis. For 
-% example, the paper title is the primary text head because all subsequent 
-% material relates and elaborates on this one topic. If there are two or more 
-% sub-topics, the next level head (uppercase Roman numerals) should be used 
-% and, conversely, if there are not at least two sub-topics, then no subheads 
-% should be introduced.
-
-% \subsection{Figures and Tables}
-% \paragraph{Positioning Figures and Tables} Place figures and tables at the top and 
-% bottom of columns. Avoid placing them in the middle of columns. Large 
-% figures and tables may span across both columns. Figure captions should be 
-% below the figures; table heads should appear above the tables. Insert 
-% figures and tables after they are cited in the text. Use the abbreviation 
-% ``Fig.~\ref{fig}'', even at the beginning of a sentence.
-
-% \begin{table}[htbp]
-% \caption{Table Type Styles}
-% \begin{center}
-% \begin{tabular}{|c|c|c|c|}
-% \hline
-% \textbf{Table}&\multicolumn{3}{|c|}{\textbf{Table Column Head}} \\
-% \cline{2-4} 
-% \textbf{Head} & \textbf{\textit{Table column subhead}}& \textbf{\textit{Subhead}}& \textbf{\textit{Subhead}} \\
-% \hline
-% copy& More table copy$^{\mathrm{a}}$& &  \\
-% \hline
-% \multicolumn{4}{l}{$^{\mathrm{a}}$Sample of a Table footnote.}
-% \end{tabular}
-% \label{tab1}
-% \end{center}
-% \end{table}
-
-% \begin{figure}[htbp]
-% \centerline{\includegraphics{fig1.png}}
-% \caption{Example of a figure caption.}
-% \label{fig}
-% \end{figure}
-
-% Figure Labels: Use 8 point Times New Roman for Figure labels. Use words 
-% rather than symbols or abbreviations when writing Figure axis labels to 
-% avoid confusing the reader. As an example, write the quantity 
-% ``Magnetization'', or ``Magnetization, M'', not just ``M''. If including 
-% units in the label, present them within parentheses. Do not label axes only 
-% with units. In the example, write ``Magnetization (A/m)'' or ``Magnetization 
-% \{A[m(1)]\}'', not just ``A/m''. Do not label axes with a ratio of 
-% quantities and units. For example, write ``Temperature (K)'', not 
-% ``Temperature/K''.
-
-% \section*{Acknowledgment}
-
-% The preferred spelling of the word ``acknowledgment'' in America is without 
-% an ``e'' after the ``g''. Avoid the stilted expression ``one of us (R. B. 
-% G.) thanks $\ldots$''. Instead, try ``R. B. G. thanks$\ldots$''. Put sponsor 
-% acknowledgments in the unnumbered footnote on the first page.
-
-% \section*{References}
-
-% Please number citations consecutively within brackets \cite{microservice}. The 
-% sentence punctuation follows the bracket \cite{b2}. Refer simply to the reference 
-% number, as in \cite{b3}---do not use ``Ref. \cite{b3}'' or ``reference \cite{b3}'' except at 
-% the beginning of a sentence: ``Reference \cite{b3} was the first $\ldots$''
-
-% Number footnotes separately in superscripts. Place the actual footnote at 
-% the bottom of the column in which it was cited. Do not put footnotes in the 
-% abstract or reference list. Use letters for table footnotes.
-
-% Unless there are six authors or more give all authors' names; do not use 
-% ``et al.''. Papers that have not been published, even if they have been 
-% submitted for publication, should be cited as ``unpublished'' \cite{b4}. Papers 
-% that have been accepted for publication should be cited as ``in press'' \cite{b5}. 
-% Capitalize only the first word in a paper title, except for proper nouns and 
-% element symbols.
-
-% For papers published in translation journals, please give the English 
-% citation first, followed by the original foreign-language citation \cite{b6}.
