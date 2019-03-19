@@ -29,6 +29,14 @@ public class mazeFactory {
 		            System.out.println("Vertical wall Created"); 
 		            c = new mazeVwall();
 		            break;
+		        case "hfill":
+		            System.out.println("Horizonal wall filler Created"); 
+		            c = new mazeHfill();
+		            break;
+		        case "hext":
+		            System.out.println("Horizonal wall exterior Created"); 
+		            c = new mazeHwallExt();
+		            break;    
 		        default :
 		            System.out.println("Unreachable code!"); 
 	          }

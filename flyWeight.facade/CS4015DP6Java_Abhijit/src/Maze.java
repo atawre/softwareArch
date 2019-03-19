@@ -12,7 +12,7 @@ public class Maze {
 		column = c;
 		createCells();
 		createHwall();
-		createVwall();		
+		createVwall();
 	}
 	
 	//all the cells are present, so this is null method
@@ -25,6 +25,8 @@ public class Maze {
 	    for (int j = 0; j < column - 1; j++) {
 	    	for (int i = 0; i < row; i++) {
 	            hWalls[i][j] = true;
+	            if(i==j)
+		            hWalls[i][j] = false;
 	    	}
 	    }
 	}
@@ -35,7 +37,9 @@ public class Maze {
 		for (int i = 0; i < row - 1; i++) {
 			for (int j = 0; j < column; j++) {
 	            vWalls[i][j] = true;
-	        }
+	            if(i>0 && i==j && j < column-1)
+	            	vWalls[i][j] = false;
+			}
 		}
 	}
 
@@ -49,7 +53,8 @@ public class Maze {
 
 	    // Print the top exterior wall.
 	    for (i = 0; i < row; i++) {
-	      s = s + "--";
+	      mazeHwallExt hExt = (mazeHwallExt) mazeFactory.getMazeComponent("hext");
+	      s = s + hExt.draw(i, i);
 	    }
 	    s = s + "-\n|";
 
@@ -57,21 +62,27 @@ public class Maze {
 	    for (j = 0; j < column; j++) {
 	      // Print a row of cells and vertical walls.
 	      for (i = 0; i < row - 1; i++) {
+		    mazeCell cell = (mazeCell) mazeFactory.getMazeComponent("cell");
 	        if (vWalls[i][j]) {
-	          s = s + " |";
+	          mazeVwall vWall = (mazeVwall) mazeFactory.getMazeComponent("vwall");
+	          s = s + cell.draw(i, j) + vWall.draw(i, j);
 	        } else {
-	          s = s + "  ";
+	          s = s + cell.draw(i, j);
 	        }
 	      }
-	      
-	      s = s + " |\n+";
+
+	      s = s + " |\n";
 	      if (j < column - 1) {
+	    	s = s + "+";
 	        // Print a row of horizontal walls and wall corners.
 	        for (i = 0; i < row; i++) {
+			  mazeCell cell = (mazeCell) mazeFactory.getMazeComponent("cell");
+	          mazeHfill hFill = (mazeHfill) mazeFactory.getMazeComponent("hfill");
 	          if (hWalls[i][j]) {
-	            s = s + "-+";
+		          mazeHwall hWall = (mazeHwall) mazeFactory.getMazeComponent("hwall");
+		          s = s + hWall.draw(i, j) + hFill.draw(i, j);
 	          } else {
-	            s = s + " +";
+	        	  s = s + cell.draw(i, j) + hFill.draw(i, j);
 	          }
 	        }
 	        s = s + "\n|";
@@ -81,10 +92,9 @@ public class Maze {
 	    // Print the bottom exterior wall.  (Note that the first corner has
 	    // already been printed.)
 	    for (i = 0; i < row; i++) {
-	      s = s + "--";
-	    }
-	    return s + "\n";
+	      mazeHwallExt hExt = (mazeHwallExt) mazeFactory.getMazeComponent("hext");
+	      s = s + hExt.draw(i, i);
+		}
+	    return s + "-\n";
 	}
 }
-
-
