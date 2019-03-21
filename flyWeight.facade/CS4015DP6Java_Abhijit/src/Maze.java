@@ -1,3 +1,9 @@
+//
+//	This class hides all the complexity associated with the maze creation.
+//	Generate method represents the facade interface
+//	This method deals with various grid elements i.e. cell, walls, fillers
+//	I don't have a concept of a door. Lack of wall is a door.
+//
 
 public class Maze {
 	private int row, column;
@@ -45,9 +51,9 @@ public class Maze {
 
 
   /**
-   *  toString() returns a string representation of the maze.
+   *  generate() returns a string representation of the maze.
    **/
-	public String toString() {
+	public String generate() {
 	    int i, j;
 	    String s = "";
 

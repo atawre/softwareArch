@@ -1,5 +1,8 @@
-import java.util.HashMap;
+//
+//the factory implements cache of maze components.
+//
 
+import java.util.HashMap;
 public class mazeFactory {
 	private static HashMap <String, mazeComponent> hMaze = 
 					new HashMap<String, mazeComponent>();
@@ -9,7 +12,7 @@ public class mazeFactory {
     {
 		mazeComponent c = null;
   
-        /* If an object for TS or CT has already been 
+        /* If an object for [cell/wall/etc] has already been 
            created simply return its reference */
         if (hMaze.containsKey(type)) {
         	c = hMaze.get(type);

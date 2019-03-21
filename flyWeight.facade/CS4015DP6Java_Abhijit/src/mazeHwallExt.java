@@ -1,4 +1,6 @@
-
+//
+// Exterior horizontal wall don't have filler and hence separate class.
+//
 public class mazeHwallExt extends mazeComponent{
 
 	public mazeHwallExt() {
