@@ -1,3 +1,11 @@
+How to run ?
+javac flyWeightTest.java;  java flyWeightTest
+
+---------------------------------------------------------
+Some information
+---------------------------------------------------------
+NOTE: FEW WALLS ALONG THE DIAGONAL ARE REMOVED, SO MAZE DOESN'T HAVE ANY SPECIFIC STRUCTURE.
+
 client - flyWeightTest
 mazeComponent - flyWeight
 maze[Hwall|Vwall|Hfill|HwallExt] - concrete flyWeights
@@ -14,8 +22,6 @@ Horitontal wall (i, j) is to the right of cell (i,j)
 Vertical wall (i, j) is below the cell (i,j)
 
 Not all grid components are represented as objects. That would create too many objects for an assignment purpose.
-
-
 
 1. Would it be easier to use the Prototype pattern instead of the Flyweight?
 	Prototype is creational pattern, whereas flyweight is structural one.

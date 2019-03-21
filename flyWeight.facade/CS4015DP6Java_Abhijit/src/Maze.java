@@ -32,7 +32,7 @@ public class Maze {
 	    	for (int i = 0; i < row; i++) {
 	            hWalls[i][j] = true;
 	            if(i==j)
-		    	hWalls[i][j] = false;
+		    	hWalls[i][j] = false;   //diagonal wall is removed.
 	    	}
 	    }
 	}
@@ -44,7 +44,7 @@ public class Maze {
 			for (int j = 0; j < column; j++) {
 				vWalls[i][j] = true;
 				if(i>0 && i==j && j < column-1)
-					vWalls[i][j] = false;
+					vWalls[i][j] = false;       //interior diagonal wall is removed.
 			}
 		}
 	}
