@@ -32,7 +32,7 @@ public class Maze {
 	    	for (int i = 0; i < row; i++) {
 	            hWalls[i][j] = true;
 	            if(i==j)
-		            hWalls[i][j] = false;
+		    	hWalls[i][j] = false;
 	    	}
 	    }
 	}
@@ -42,17 +42,17 @@ public class Maze {
 		vWalls = new boolean[row-1][column];
 		for (int i = 0; i < row - 1; i++) {
 			for (int j = 0; j < column; j++) {
-	            vWalls[i][j] = true;
-	            if(i>0 && i==j && j < column-1)
-	            	vWalls[i][j] = false;
+				vWalls[i][j] = true;
+				if(i>0 && i==j && j < column-1)
+					vWalls[i][j] = false;
 			}
 		}
 	}
 
 
-  /**
-   *  generate() returns a string representation of the maze.
-   **/
+  //
+  // generate() returns a string representation of the maze.
+  //
 	public String generate() {
 	    int i, j;
 	    String s = "";
@@ -73,7 +73,7 @@ public class Maze {
 	          mazeVwall vWall = (mazeVwall) mazeFactory.getMazeComponent("vwall");
 	          s = s + cell.draw(i, j) + vWall.draw(i, j);
 	        } else {
-	          s = s + cell.draw(i, j);
+	          s = s + cell.draw(i, j) + cell.draw(i, j);
 	        }
 	      }
 
