@@ -15,3 +15,28 @@ Vertical wall (i, j) is below the cell (i,j)
 
 Not all grid components are represented as objects. That would create too many objects for an assignment purpose.
 
+
+
+1. Would it be easier to use the Prototype pattern instead of the Flyweight?
+	Prototype is creational pattern, whereas flyweight is structural one.
+	Flyweight shold be used when large number of similar objects are needed.
+	Prototype helps avoid cost of creation by cloning a prototype, .e.g. a heavy computation can be reused.
+	In case of maze example the cells/walls are similar and don't need to reuse heavy computations.
+	Also the cloning overhead is avoided in flyweight, which is a clear win when you have a large number of similar objects.
+	Hence flyWeight is a correct choise here.
+
+2. What would be the memory consumption in the two cases, especially if you were using large high-resolution images?
+	In case of flyWeight I am only creating one object of each type. They differ in position, which can be updated on use.
+	Each object need to store an image. With prototype pattern, we would save the same image for each similar object.
+	FlyWeight keeps a single image per object type, hence saves the memory.
+	E.g.
+	sizeofImage(wall|cell|filler) = 1 kb
+	for 100 x 100 grid
+	Total cells = 100000
+	Total Walls = 99000 * 2
+	Total fillers = some huge number
+
+	Total size with prototype = (1000000 + 99000*2 + some huge number) * 1kb
+	Total size with flyWeight = 1kb * 3	(Super small)
+
+	
