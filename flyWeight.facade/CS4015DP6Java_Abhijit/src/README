@@ -1,0 +1,17 @@
+client - flyWeightTest
+mazeComponent - flyWeight
+maze[Hwall|Vwall|Hfill|HwallExt] - concrete flyWeights
+mazeFactory - factory for mazeComponents (reusable cache)
+Maze - generate method implements facade
+
+The generate method uses two boolean arrays i.e. hWall , vWall representing presence of horizontal/vertical walls.
+
+hWalls = row*(column - 1)
+vWalls = (row-1)*(column)
+
+The position of wall in array represents it's position in grid.
+Horitontal wall (i, j) is to the right of cell (i,j)
+Vertical wall (i, j) is below the cell (i,j)
+
+Not all grid components are represented as objects. That would create too many objects for an assignment purpose.
+
