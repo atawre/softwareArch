@@ -1,0 +1,30 @@
+Create a program that uses three Iterator patterns to navigate a binary tree using the three common traversal algorithm: inorder, preorder, and postorder. Only one iterator of each type can exist. The binary tree structure should be built using the composite pattern. You are free to choose the content of each node and leaf. The client will receive the following commands:
+
+ 
+
+G <n>              Generates a random binary tree with n levels
+
+I	Creates an inorder iterator if it does not exist, and print the next item
+
+P      	Creates a preorder iterator if it does not exist, and print the next item
+
+O      	Creates a postorder iterator if it does not exist, and print the next item
+
+Q      	Quits the program
+
+ 
+
+Required development process for the program:
+
+(Lab) In Rational Software Architect Designer, create a model project with name “CS4015DP7Model_studentname” with a class UML diagram with name “FacadeFlyweight”.
+(Lab) In the class diagram, design classes and their relationships with as much as detail as possible.
+(Lab) Generate Java code from the design classes in (2) into a Java project with name “CS4015DP7Java_studentname”.
+(Individual) Complete the programs by writing code for each method of each generated class.
+(Individual) Test your program.
+ 
+
+Submission: 
+
+Export the “CS4015DP7Model_studentname” and “CS4015DP7Java_studentname” projects to a single zip file with name “CS4015DP7_studentname.zip”. 
+Submit the zip file to the designated folder in the course D2L.
+
