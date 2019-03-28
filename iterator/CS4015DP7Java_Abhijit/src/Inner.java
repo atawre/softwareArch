@@ -1,4 +1,5 @@
 
+// Implements Node. (It is a composite)
 public class Inner implements Node {
 	Integer val;
 	Node left, right;
@@ -7,8 +8,7 @@ public class Inner implements Node {
 		return Integer.toString(val);
 	}
 
-
-	//operator constructor with only operator mentioned.
+	//non-leaf constructor with only operator mentioned.
 	public Inner(int v) {
 		val = v;
 		left = right = null;
@@ -44,24 +44,6 @@ public class Inner implements Node {
 	@Override
 	public void addRight(Node r) {
 		right = r;
-	}
-
-	@Override
-	public Iterator createIterator(String type) {
-		Iterator it = null;
-        switch(type)
-        {
-            case "inorder": 
-                it = new inOrder(this);
-                break;
-            case "preorder":
-                it = new preOrder(this);
-                break;
-            case "postorder":
-                it = new postOrder(this);
-                break;
-        }
-		return it;
 	}
 }
 

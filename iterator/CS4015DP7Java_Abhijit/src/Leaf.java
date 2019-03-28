@@ -1,4 +1,7 @@
-
+/*
+ * Leaf element don't have left/right children
+ * Implements node 
+ */
 public class Leaf implements Node {
 	Integer val;
 	public Leaf(Integer v) {
@@ -17,14 +20,12 @@ public class Leaf implements Node {
 	//Unsupported for leaf node
 	@Override
 	public Node getLeft() {
-		//throw new UnsupportedOperationException();
 		return null;
 	}
 
 	//Unsupported for leaf node
 	@Override
 	public Node getRight() {
-		//throw new UnsupportedOperationException();
 		return null;
 	}
 
@@ -40,9 +41,4 @@ public class Leaf implements Node {
 		throw new UnsupportedOperationException();
 	}
 
-	@Override
-	public Iterator createIterator(String type) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }

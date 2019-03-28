@@ -1,7 +1,10 @@
 import java.util.Stack;
 
+
 public class inOrder implements Iterator{
 	Stack<Node> stack;
+	
+	// Keep pushing all the leftmost subtree to stack
 	public inOrder(Node root) {
 		stack = new Stack<Node>();
 		while (root != null) {
@@ -10,6 +13,8 @@ public class inOrder implements Iterator{
 		}
 	}
 
+	//pop from stack which is next in InOrder
+	//push all leftmost subtree of the right child for this next inorder element.
 	@Override
 	public Node next() {
 		Node node = stack.pop();
@@ -24,9 +29,9 @@ public class inOrder implements Iterator{
 		return result;
 	}
 
+	//check if there is next element in iterator
 	@Override
 	public boolean hasNext() {
 		return !stack.isEmpty();
 	}
-
 }

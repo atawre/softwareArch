@@ -13,6 +13,7 @@ public class client {
 		Iterator itr = null;
 		
 		System.out.println("G <n>	Generates a random binary tree with n levels");
+		System.out.println("L	Level wise printing");
 		System.out.println("I	Creates an inorder iterator if it does not exist, and print the next item");
 		System.out.println("P	Creates a preorder iterator if it does not exist, and print the next item");
 		System.out.println("O	Creates a postorder iterator if it does not exist, and print the next item");
@@ -28,7 +29,7 @@ public class client {
 					levels = scan.nextInt();	//scan total levels
 					elements = (int) Math.pow(2, levels) - 1;
 					leaves = (int) Math.pow(2, levels-1);	//number of leaves
-					int[] range = IntStream.rangeClosed(1, elements).toArray();
+					int[] range = IntStream.rangeClosed(1, elements).toArray();		//array of elements in the tree
 					System.out.println("Generate level " + Integer.toString(levels));
 					root = insertLevelOrder(range, root, 0);
 					break;
@@ -37,7 +38,7 @@ public class client {
 					System.out.println("------------------------------");
 					System.out.println("InOrder");
 					System.out.println("------------------------------");
-					itr = new inOrder(root);
+					itr = Node.createIterator("inorder", root);
 					while(itr.hasNext()) {
 						Node n = itr.next();
 						System.out.print(n.getVal());
@@ -49,7 +50,7 @@ public class client {
 					System.out.println("------------------------------");
 					System.out.println("PreOrder");
 					System.out.println("------------------------------");
-					itr = new preOrder(root);
+					itr = Node.createIterator("preorder", root);
 					while(itr.hasNext()) {
 						Node n = itr.next();
 						System.out.print(n.getVal());
@@ -58,7 +59,19 @@ public class client {
 					break;
 				case 'o':
 				case 'O' :
-					System.out.println("PreOrder");
+					System.out.println("------------------------------");
+					System.out.println("PostOrder");
+					System.out.println("------------------------------");
+					itr = Node.createIterator("postorder", root);
+					while(itr.hasNext()) {
+						Node n = itr.next();
+						System.out.print(n.getVal());
+						System.out.print(" ");
+					}
+					break;
+				case 'l':
+				case 'L':
+					printLevelOrder(root);
 					break;
 				case 'q':
 				case 'Q':
@@ -80,7 +93,7 @@ public class client {
         	if(!isLeaf) {
         		Inner temp = new Inner(arr[i]);
                 // insert left child
-                temp.setLeft(insertLevelOrder(arr, temp.getLeft(), 
+                temp.setLeft(insertLevelOrder(arr, temp.getLeft(),
                                                  2 * i + 1));
                 // insert right child
                 temp.setRight(insertLevelOrder(arr, temp.getRight(),
@@ -98,7 +111,6 @@ public class client {
 	//Iterative method to do level order traversal line by line 
     static void printLevelOrder(Node root)
     {
-    	
     	System.out.println();
     	System.out.println("Level wise printing.");
         // Base Case 

@@ -10,5 +10,22 @@ public interface Node {
 	void addLeft(Node l);
 
 	void addRight(Node r);
-	Iterator createIterator(String type);
+	
+	//static method to return the desired iterator
+	static Iterator createIterator(String type, Node root) {
+			Iterator it = null;
+	        switch(type)
+	        {
+	            case "inorder": 
+	                it = new inOrder(root);
+	                break;
+	            case "preorder":
+	                it = new preOrder(root);
+	                break;
+	            case "postorder":
+	                it = new postOrder(root);
+	                break;
+	        }
+			return it;
+	}
 }
