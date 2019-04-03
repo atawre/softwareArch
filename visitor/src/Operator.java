@@ -3,6 +3,28 @@
 public class Operator implements Node {
 	Character op;
 	Node left, right;
+	
+	//acts as router to select appropriate visitor method.
+	@Override
+	public Double accept(Evaluator e) {
+		Double result = 0.0;
+		switch(op) {
+			case '+':
+				result =  e.visitPlus(this);
+				break;
+			case '-':
+				result =  e.visitMinus(this);
+				break;
+			case '*':
+				result =  e.visitMultiply(this);
+				break;
+			case '/':
+				result =  e.visitDivide(this);
+				break;
+		}
+		return result;
+	}
+
 
 	public String getVal() {
 		return Character.toString(op);
@@ -46,25 +68,6 @@ public class Operator implements Node {
 		right = r;
 	}
 
-	@Override
-	public Double accept(Evaluator e) {
-		Double result = 0.0;
-		switch(op) {
-			case '+':
-				result =  e.visitPlus(this);
-				break;
-			case '-':
-				result =  e.visitMinus(this);
-				break;
-			case '*':
-				result =  e.visitMultiply(this);
-				break;
-			case '/':
-				result =  e.visitDivide(this);
-				break;
-		}
-		return result;
-	}
 }
 
 

@@ -3,6 +3,8 @@ import java.util.Queue;
 import java.util.Scanner;
 import java.util.stream.IntStream;
 
+//Client class to test visitor pattern.
+
 public class client {
 	static int levels;		//number of tree levels
 	static int leaves;		//total leaves in the tree
@@ -65,8 +67,9 @@ public class client {
     	// Base case for recursion
         if (i < elements) {
         	if(!isLeaf) {
-        		Operator temp = new Operator(operators[i%4]);
-                // insert left child
+        		Operator temp = new Operator(operators[i%4]);	//operator selection logic.
+
+        		// insert left child
                 temp.setLeft(insertLevelOrder(arr, temp.getLeft(),
                                                  2 * i + 1));
                 // insert right child
@@ -74,12 +77,12 @@ public class client {
                                                    2 * i + 2));
                 root = temp;
         	}else {
-        		Leaf temp = new Leaf(arr[i]);
+        		Leaf temp = new Leaf(arr[i]);		//selects leaf from generated array sequence.
                 root = temp;
         	}
         }
-        return root;
-    } 
+        return root;			//returns tree root
+    }
 
 	
 	//Iterative method to do level order traversal line by line 
@@ -102,7 +105,7 @@ public class client {
             // at current level. 
             int nodeCount = q.size(); 
             if(nodeCount == 0) 
-                break;
+            	break;
             // Dequeue all nodes of current level and Enqueue all
             // nodes of next level
             while(nodeCount > 0)

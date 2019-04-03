@@ -41,6 +41,7 @@ public class Leaf implements Node {
 		throw new UnsupportedOperationException();
 	}
 
+	//It invokes Leaf specific visit call
 	@Override
 	public Double accept(Evaluator e) {
 		return e.visitLeaf(this);
