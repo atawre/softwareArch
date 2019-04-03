@@ -1,32 +1,32 @@
 
-Client invokes factory method to get the desired iterator.
-Iterator is used to traverse the tree and print node content.
+Client invokes generate tree method to create a balanced expression tree.
+Inner nodes are operators [+-*/] and leaf nodes are integer values.
 
-For command  G <n>  e.g.  G 3 , following steps happens
+For command  G <n>  e.g.  G 3 , tree with 3 levels is created.
 
 array with 2^3 - 1 elements is created 1, 2, 3, 4, 5, 6, 7
-Following tree is formed in same order.
+Last 2^(levels-1) elements for leaf nodes. Rest of array elements are ignored. Those positions are filled with operators. 
+Operators are selected from operators arrays. Position in elements array % 4 = position in operator array.
 
-			   1
-		2			3
+			   +
+		*			/
 	4		5	6		7
 
-The element numbers are alwats sequential. I could have made it random as well.
-Formed tree is balanced always.
-I/P/O  commands give respective traversal.
-L command gives level wise printing (easier to visualize that way.
+The element numbers are always sequential. I could have made it random as well.
+E Evaluates tree using visitor pattern (infix order)
+V Display tree in level order.
+
+Composite consists of:
+Node 		- interface
+Operator	- Inner node of tree with left/right children
+Leaf		- Leaf node of the tree (no children)
+
+Visitor consists of :
+Evaluator	- Visitor
+infixEvaluator	- Concrete Visitor
 
 
-Composite consists of 
-	Node 	- interface
-	Inner	- Inner node of tree with left/right children
-	Lead	- Leaf node of the tree (no children)
 
-	Iterator - interface
-	[in|pre|post]Order	- concrete iterators
-	createIterator	- iterator factory.
+InsertLevelOrder method generate binary expression tree.
 
-	Implmentation details mentioned with comments in the source file.
-
-	Client class uses Node and Iterator factory.
-
+printLevelOrder prints expression tree in level order.
