@@ -1,4 +1,6 @@
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 import java.util.Scanner;
 import java.util.stream.IntStream;
@@ -48,6 +50,12 @@ public class client {
 					System.out.println("Visualize the tree");
 					System.out.println("------------------------------");
 					printLevelOrder(root);
+					System.out.println("------------------------------");
+					System.out.println("Visualize the tree with spacing");
+					System.out.println("------------------------------");
+				    List<Node> list = new ArrayList<Node>();
+				    list.add(root);
+				    Node.printTree(list, Node.getHeight(root));
 					break;
 				case 'q':
 				case 'Q':
