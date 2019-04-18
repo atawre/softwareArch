@@ -5,5 +5,6 @@ visitor		- Evaluator/infixEvaluator
 singleton	- ModelDb
 decorator	- quotedNode, nodeDecorator
 template method	- buildTree
+factory method	- iteratorFactory
 flyWeight	- display(int level) used across composite hierarchy.
 MVC		- frontEnd/ModelDb/Whole of the project
