@@ -92,6 +92,14 @@ public class ExpressionTree {
 	    }
 	}
 
+	private void printSpacingBetweenNodes(int level){
+	    //spacing between nodes
+	    for (int i = (int) ((Math.pow(2,level-1))*2)-1; i >0; i--) {
+	        System.out.print(" ");
+	    }
+	}
+
+	
 	/**
 	 * pass head node in list and height of the tree 
 	 * @param levelNodes
@@ -108,13 +116,12 @@ public class ExpressionTree {
 
 	        //print node data
 	        //System.out.print(treeNode == null?" ":treeNode.getVal());
-	        if(treeNode == null)
+	        if(treeNode == null) {
 	        	System.out.print(" ");
-	        else
+	        	printSpacingBetweenNodes(level);
+	        }else {
 	        	treeNode.display(level);
-	        //spacing between nodes
-	        //printSpacingBetweenNodes(level);
-
+	        }
 	        //if its not a leaf node
 	        if(level>1){
 	            nodes.add(treeNode == null? null:treeNode.getLeft());

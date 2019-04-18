@@ -89,7 +89,7 @@ public class logOpsExpressionTree extends ExpressionTree {
         } else if (ch == '(') {
         	Operator o = new Operator(' ');
             // an expression
-        	System.out.println("Calling addLeft");        	
+        	System.out.println("Calling addLeft");
             o.addLeft(readTree());
         	System.out.println("Calling setVal");
             o.setVal(in.findInLine("(\\S)").charAt(0));

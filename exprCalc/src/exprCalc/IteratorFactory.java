@@ -7,8 +7,8 @@ import java.util.HashMap;
  * @class IteratorFactory
  * 
  * @brief Implementation of the Factory Method pattern that
- *        dynamically allocates the appropriate @a Iterator strategy
- *        requested by a caller.  This variant of the pattern doesn't
+ *        dynamically allocates the Iterator. 
+ *        This variant of the pattern doesn't
  *        use inheritance, so it plays the role of the ConcreteCreator
  *        in the Factory Method pattern.
  */
@@ -24,10 +24,10 @@ public class IteratorFactory {
     }
 
     /**
-     * Create a new @a Iterator implementation based on the caller's
-     * designated @a traversalOrderRequest.
+     * Create a new Iterator based on the 
+     * designated traversal.
      */
-    public Iterator<?> makeIterator(String traversal) {
+    public Iterator makeIterator(String traversal) {
         if (traversal.equals(""))
             /**
              * Default to in-order if user doesn't explicitly request
