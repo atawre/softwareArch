@@ -6,14 +6,6 @@ public class quotedNode extends nodeDecorator{
 		super(newNode);
 	}
 
-	//Adds quotes around the display leaf/operator.
-//	@Override
-//	public void display() {
-//		System.out.print("'");
-//		tempNode.display();
-//		System.out.print("'");
-//	}
-
 	@Override
 	public String getVal() {
 		return "'" + tempNode.getVal() + "'";

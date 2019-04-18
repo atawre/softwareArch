@@ -12,9 +12,9 @@ import java.util.Scanner;
 public class ExpressionTree {
     /** Base implementor. */
     protected Node root = null;
-    private IteratorFactory iFactory = null;
-	private infixEvaluator infixEval = null;
-    private Scanner in = null;
+    protected IteratorFactory iFactory = null;
+	protected infixEvaluator infixEval = null;
+    protected Scanner in = null;
 	
     /**
      * Ctor that takes a @a Node * that contains all the nodes in the
@@ -57,12 +57,10 @@ public class ExpressionTree {
     }
 
     public void buildTree(String expr) {
-		in = new Scanner(expr);
-    	root = readTree();
-    	//iFactory = new IteratorFactory(this);
+    	
     }
 
-    private Node readTree() {
+    protected Node readTree() {
         Node n = null;
         // get next non-whitespace char
         char ch = in.findInLine("(\\S)").charAt(0);

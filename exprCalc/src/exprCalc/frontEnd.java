@@ -17,8 +17,9 @@ public class frontEnd {
 
 	private JFrame frmExpressionEvaluator;
 	private JTextField input;
-	private Model mydb;
-	private ExpressionTree tree;
+	private logOpsExpressionTree tree;
+	private ModelDb mydb;
+
 	/**
 	 * Launch the application.
 	 */
@@ -47,8 +48,8 @@ public class frontEnd {
 	 */
 	private void initialize() {
 		//init the expression tree
-		tree = new ExpressionTree();
-		mydb = Model.getInstance();
+		tree = new logOpsExpressionTree();
+		mydb = ModelDb.getInstance();
 		
 		frmExpressionEvaluator = new JFrame();
 		frmExpressionEvaluator.setTitle("Expression Evaluator");
@@ -235,17 +236,16 @@ public class frontEnd {
 				mydb.setExpr(text);
 			}
 		});
-		close.setBounds(23, 269, 60, 25);
+		close.setBounds(23, 269, 53, 25);
 		frmExpressionEvaluator.getContentPane().add(close);
 		
 		JButton eval = new JButton("Eval");
 		eval.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				tree.buildTree(mydb.getExpr());
 				input.setText(Double.toString(tree.accept()));
 			}
 		});
-		eval.setBounds(90, 269, 130, 25);
+		eval.setBounds(158, 269, 62, 25);
 		frmExpressionEvaluator.getContentPane().add(eval);
 		
 		JButton inorder = new JButton("inorder");
@@ -296,5 +296,15 @@ public class frontEnd {
 		JButton display = new JButton("display");
 		display.setBounds(136, 338, 84, 25);
 		frmExpressionEvaluator.getContentPane().add(display);
+		
+		JButton build = new JButton("Build");
+		build.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				tree.buildTree(mydb.getExpr());
+				input.setText("done");
+			}
+		});
+		build.setBounds(79, 269, 71, 25);
+		frmExpressionEvaluator.getContentPane().add(build);
 	}
 }
