@@ -6,6 +6,12 @@ public class Leaf implements Node {
 		val = v;
 	}
 
+	//It invokes Leaf specific visit call
+	@Override
+	public Double accept(Evaluator e) {
+		return e.visitLeaf(this);
+	}
+	
 	public String getVal() {
 		return Integer.toString(val);
 	}

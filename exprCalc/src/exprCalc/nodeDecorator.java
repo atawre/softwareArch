@@ -9,10 +9,10 @@ public abstract class nodeDecorator implements Node {
 		}
 		
 		//display method of containing object is invoked.
-		@Override
-		public void display() {
-			tempNode.display();		
-		}
+//		@Override
+//		public void display() {
+//			tempNode.display();		
+//		}
 
 		//getLeft method of containing object is invoked.
 		@Override

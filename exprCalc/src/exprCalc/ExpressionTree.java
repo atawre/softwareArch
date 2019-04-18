@@ -13,18 +13,21 @@ public class ExpressionTree {
     /** Base implementor. */
     protected Node root = null;
     private IteratorFactory iFactory = null;
-    Scanner in = null;
-    
+	private infixEvaluator infixEval = null;
+    private Scanner in = null;
+	
     /**
      * Ctor that takes a @a Node * that contains all the nodes in the
      * expression tree.
      */
     public ExpressionTree(Node root) {
         this.root = root;
+        infixEval = new infixEvaluator();
     }
 
     public ExpressionTree() {
         this.root = null;
+        infixEval = new infixEvaluator();
     }
     
     /** Returns whether a the tree is null. */
@@ -85,11 +88,11 @@ public class ExpressionTree {
         return n;
     }
 
-    
     /** Accepts a @a visitor. */
-//    public void accept(Visitor visitor) {
-//        root.accept(visitor);
-//    }
+    public double accept() {
+		root.accept(infixEval);
+		return infixEval.getResult();
+    }
 
     /** 
      * Returns an @a Iterator that supports the requested

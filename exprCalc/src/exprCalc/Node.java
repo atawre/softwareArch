@@ -2,9 +2,6 @@ package exprCalc;
 
 //An interface for the Node i.e. leaf, operator and decorator too.
 public interface Node {
-
-	public void display();
-
 	public String getVal();
 	
 	Node getLeft();
@@ -14,4 +11,8 @@ public interface Node {
 	void addLeft(Node l);
 
 	void addRight(Node r);
+	
+	//accepts the visitor to implement specialized operation
+	public Double accept(Evaluator e);
+
 }

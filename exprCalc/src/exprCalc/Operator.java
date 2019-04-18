@@ -11,17 +11,38 @@ public class Operator implements Node {
 	public void setVal(Character ch) {
 		op = ch;
 	}
+
+	//acts as router to select appropriate visitor method.
+	@Override
+	public Double accept(Evaluator e) {
+		Double result = 0.0;
+		switch(op) {
+			case '+':
+				result =  e.visitPlus(this);
+				break;
+			case '-':
+				result =  e.visitMinus(this);
+				break;
+			case '*':
+				result =  e.visitMultiply(this);
+				break;
+			case '/':
+				result =  e.visitDivide(this);
+				break;
+		}
+		return result;
+	}
 	
 	//inorder traversal is used to print the operator.
-	public void display() {
-		if(left!=null)
-			left.display();
-
-		System.out.print(op);
-		
-		if(right!=null)
-			right.display();
-	}
+//	public void display() {
+//		if(left!=null)
+//			left.display();
+//
+//		System.out.print(op);
+//		
+//		if(right!=null)
+//			right.display();
+//	}
 
 	//operator constructor with only operator mentioned.
 	public Operator(Character c) {

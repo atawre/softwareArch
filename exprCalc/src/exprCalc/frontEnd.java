@@ -241,7 +241,8 @@ public class frontEnd {
 		JButton eval = new JButton("Eval");
 		eval.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				tree.buildTree(input.getText());
+				tree.buildTree(mydb.getExpr());
+				input.setText(Double.toString(tree.accept()));
 			}
 		});
 		eval.setBounds(90, 269, 130, 25);
