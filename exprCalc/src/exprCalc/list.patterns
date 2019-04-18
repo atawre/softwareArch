@@ -8,3 +8,4 @@ template method	- buildTree
 factory method	- iteratorFactory
 flyWeight	- display(int level) used across composite hierarchy.
 MVC		- frontEnd/ModelDb/Whole of the project
+DockerFile	- can run the app from ubuntu docker image.
