@@ -16,8 +16,9 @@ import java.awt.FlowLayout;
 public class frontEnd {
 
 	private JFrame frmExpressionEvaluator;
-	private JTextField textField;
-
+	private JTextField input;
+	private Model mydb;
+	private ExpressionTree tree;
 	/**
 	 * Launch the application.
 	 */
@@ -32,7 +33,7 @@ public class frontEnd {
 				}
 			}
 		});
-	}
+ 	}
 
 	/**
 	 * Create the application.
@@ -45,100 +46,254 @@ public class frontEnd {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		//init the expression tree
+		tree = new ExpressionTree();
+		mydb = Model.getInstance();
+		
 		frmExpressionEvaluator = new JFrame();
 		frmExpressionEvaluator.setTitle("Expression Evaluator");
 		frmExpressionEvaluator.setBounds(100, 100, 250, 417);
 		frmExpressionEvaluator.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmExpressionEvaluator.getContentPane().setLayout(null);
 		
-		textField = new JTextField();
-		textField.setBounds(23, 34, 197, 43);
-		frmExpressionEvaluator.getContentPane().add(textField);
-		textField.setColumns(10);
+		input = new JTextField();
+		input.setBounds(23, 34, 197, 43);
+		frmExpressionEvaluator.getContentPane().add(input);
+		input.setColumns(10);
 		
-		JButton button = new JButton("1");
-		button.setBounds(90, 89, 60, 25);
-		frmExpressionEvaluator.getContentPane().add(button);
+		JButton one = new JButton("1");
+		one.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				String text = input.getText() + "1";
+				input.setText(text);
+				mydb.setExpr(text);
+			}
+		});
+		one.setBounds(90, 89, 60, 25);
+		frmExpressionEvaluator.getContentPane().add(one);
 		
-		JButton button_1 = new JButton("0");
-		button_1.setBounds(23, 89, 60, 25);
-		frmExpressionEvaluator.getContentPane().add(button_1);
+		JButton zero = new JButton("0");
+		zero.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				String text = input.getText() + "0";
+				input.setText(text);
+				mydb.setExpr(text);
+			}
+		});
 		
-		JButton button_2 = new JButton("2");
-		button_2.setBounds(160, 89, 60, 25);
-		frmExpressionEvaluator.getContentPane().add(button_2);
+		zero.setBounds(23, 89, 60, 25);
+		frmExpressionEvaluator.getContentPane().add(zero);
 		
-		JButton button_3 = new JButton("3");
-		button_3.setBounds(23, 126, 60, 25);
-		frmExpressionEvaluator.getContentPane().add(button_3);
+		JButton two = new JButton("2");
+		two.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				String text = input.getText() + "2";
+				input.setText(text);
+				mydb.setExpr(text);
+			}
+		});
+		two.setBounds(160, 89, 60, 25);
+		frmExpressionEvaluator.getContentPane().add(two);
 		
-		JButton button_4 = new JButton("5");
-		button_4.setBounds(160, 126, 60, 25);
-		frmExpressionEvaluator.getContentPane().add(button_4);
+		JButton three = new JButton("3");
+		three.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				String text = input.getText() + "3";
+				input.setText(text);
+				mydb.setExpr(text);
+			}
+		});
+		three.setBounds(23, 126, 60, 25);
+		frmExpressionEvaluator.getContentPane().add(three);
 		
-		JButton button_5 = new JButton("4");
-		button_5.setBounds(90, 126, 60, 25);
-		frmExpressionEvaluator.getContentPane().add(button_5);
+		JButton five = new JButton("5");
+		five.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				String text = input.getText() + "5";
+				input.setText(text);
+				mydb.setExpr(text);
+			}
+		});
+		five.setBounds(160, 126, 60, 25);
+		frmExpressionEvaluator.getContentPane().add(five);
 		
-		JButton button_6 = new JButton("7");
-		button_6.setBounds(93, 163, 60, 25);
-		frmExpressionEvaluator.getContentPane().add(button_6);
+		JButton four = new JButton("4");
+		four.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				String text = input.getText() + "4";
+				input.setText(text);
+				mydb.setExpr(text);
+			}
+		});
+		four.setBounds(90, 126, 60, 25);
+		frmExpressionEvaluator.getContentPane().add(four);
 		
-		JButton button_7 = new JButton("6");
-		button_7.setBounds(23, 163, 60, 25);
-		frmExpressionEvaluator.getContentPane().add(button_7);
+		JButton seven = new JButton("7");
+		seven.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				String text = input.getText() + "7";
+				input.setText(text);
+				mydb.setExpr(text);
+			}
+		});
+		seven.setBounds(93, 163, 60, 25);
+		frmExpressionEvaluator.getContentPane().add(seven);
 		
-		JButton button_8 = new JButton("8");
-		button_8.setBounds(160, 163, 60, 25);
-		frmExpressionEvaluator.getContentPane().add(button_8);
+		JButton six = new JButton("6");
+		six.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				String text = input.getText() + "6";
+				input.setText(text);
+				mydb.setExpr(text);
+			}
+		});
+		six.setBounds(23, 163, 60, 25);
+		frmExpressionEvaluator.getContentPane().add(six);
 		
-		JButton button_9 = new JButton("9");
-		button_9.setBounds(23, 200, 60, 25);
-		frmExpressionEvaluator.getContentPane().add(button_9);
+		JButton eight = new JButton("8");
+		eight.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				String text = input.getText() + "8";
+				input.setText(text);
+				mydb.setExpr(text);
+			}
+		});
+		eight.setBounds(160, 163, 60, 25);
+		frmExpressionEvaluator.getContentPane().add(eight);
 		
-		JButton button_10 = new JButton("+");
-		button_10.setBounds(90, 200, 60, 25);
-		frmExpressionEvaluator.getContentPane().add(button_10);
+		JButton nine = new JButton("9");
+		nine.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				String text = input.getText() + "9";
+				input.setText(text);
+				mydb.setExpr(text);
+			}
+		});
+		nine.setBounds(23, 200, 60, 25);
+		frmExpressionEvaluator.getContentPane().add(nine);
 		
-		JButton button_11 = new JButton("-");
-		button_11.setBounds(160, 200, 60, 25);
-		frmExpressionEvaluator.getContentPane().add(button_11);
+		JButton plus = new JButton("+");
+		plus.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				String text = input.getText() + "+";
+				input.setText(text);
+				mydb.setExpr(text);
+			}
+		});
+		plus.setBounds(90, 200, 60, 25);
+		frmExpressionEvaluator.getContentPane().add(plus);
 		
-		JButton button_12 = new JButton("*");
-		button_12.setBounds(23, 232, 60, 25);
-		frmExpressionEvaluator.getContentPane().add(button_12);
+		JButton minus = new JButton("-");
+		minus.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				String text = input.getText() + "-";
+				input.setText(text);
+				mydb.setExpr(text);
+			}
+		});
+		minus.setBounds(160, 200, 60, 25);
+		frmExpressionEvaluator.getContentPane().add(minus);
 		
-		JButton button_13 = new JButton("/");
-		button_13.setBounds(93, 232, 60, 25);
-		frmExpressionEvaluator.getContentPane().add(button_13);
+		JButton mult = new JButton("*");
+		mult.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				String text = input.getText() + "*";
+				input.setText(text);
+				mydb.setExpr(text);
+			}
+		});		
+		mult.setBounds(23, 232, 60, 25);
+		frmExpressionEvaluator.getContentPane().add(mult);
 		
-		JButton btnEval = new JButton("(");
+		JButton divide = new JButton("/");
+		divide.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				String text = input.getText() + "/";
+				input.setText(text);
+				mydb.setExpr(text);
+			}
+		});
+		divide.setBounds(90, 232, 60, 25);
+		frmExpressionEvaluator.getContentPane().add(divide);
+		
+		JButton open = new JButton("(");
+		open.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				String text = input.getText() + "(";
+				input.setText(text);
+				mydb.setExpr(text);
+			}
+		});
+		open.setBounds(160, 232, 60, 25);
+		frmExpressionEvaluator.getContentPane().add(open);
+		
+		JButton close = new JButton(")");
+		close.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				String text = input.getText() + ")";
+				input.setText(text);
+				mydb.setExpr(text);
+			}
+		});
+		close.setBounds(23, 269, 60, 25);
+		frmExpressionEvaluator.getContentPane().add(close);
+		
+		JButton eval = new JButton("Eval");
+		eval.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				tree.buildTree(input.getText());
+			}
+		});
+		eval.setBounds(90, 269, 130, 25);
+		frmExpressionEvaluator.getContentPane().add(eval);
+		
+		JButton inorder = new JButton("inorder");
+		inorder.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Iterator in = new inOrder(tree.root);
+				String str = "";
+				while(in.hasNext()) {
+					str += " " + in.next().getVal();
+				}
+				input.setText(str);
+			}
+		});
+		inorder.setBounds(23, 301, 94, 25);
+		frmExpressionEvaluator.getContentPane().add(inorder);
+		
+		JButton preorder = new JButton("preorder");
+		preorder.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Iterator in = new preOrder(tree.root);
+				String str = "";
+				while(in.hasNext()) {
+					str += " " + in.next().getVal();
+				}
+				input.setText(str);
+			}
+		});
 
-		btnEval.setBounds(160, 232, 60, 25);
-		frmExpressionEvaluator.getContentPane().add(btnEval);
+		preorder.setBounds(126, 301, 94, 25);
+		frmExpressionEvaluator.getContentPane().add(preorder);
 		
-		JButton button_14 = new JButton(")");
-		button_14.setBounds(23, 269, 60, 25);
-		frmExpressionEvaluator.getContentPane().add(button_14);
+		JButton postorder = new JButton("postorder");
+
+		postorder.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Iterator in = new postOrder(tree.root);
+				String str = "";
+				while(in.hasNext()) {
+					str += " " + in.next().getVal();
+				}
+				input.setText(str);
+			}
+		});
+
+		postorder.setBounds(23, 338, 101, 25);
+		frmExpressionEvaluator.getContentPane().add(postorder);
 		
-		JButton btnEval_1 = new JButton("Eval");
-		btnEval_1.setBounds(90, 269, 130, 25);
-		frmExpressionEvaluator.getContentPane().add(btnEval_1);
-		
-		JButton btnInorder = new JButton("inorder");
-		btnInorder.setBounds(23, 301, 94, 25);
-		frmExpressionEvaluator.getContentPane().add(btnInorder);
-		
-		JButton btnPreorder = new JButton("preorder");
-		btnPreorder.setBounds(126, 301, 94, 25);
-		frmExpressionEvaluator.getContentPane().add(btnPreorder);
-		
-		JButton btnPostorder = new JButton("postorder");
-		btnPostorder.setBounds(23, 338, 101, 25);
-		frmExpressionEvaluator.getContentPane().add(btnPostorder);
-		
-		JButton btnDisplay = new JButton("display");
-		btnDisplay.setBounds(136, 338, 84, 25);
-		frmExpressionEvaluator.getContentPane().add(btnDisplay);
+		JButton display = new JButton("display");
+		display.setBounds(136, 338, 84, 25);
+		frmExpressionEvaluator.getContentPane().add(display);
 	}
 }
