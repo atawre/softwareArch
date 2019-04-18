@@ -1,6 +1,8 @@
 package exprCalc;
 
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -11,7 +13,7 @@ import java.util.Scanner;
  */
 public class ExpressionTree {
     /** Base implementor. */
-    protected Node root = null;
+    protected quotedNode root = null;
     protected IteratorFactory iFactory = null;
 	protected infixEvaluator infixEval = null;
     protected Scanner in = null;
@@ -20,11 +22,14 @@ public class ExpressionTree {
      * Ctor that takes a @a Node * that contains all the nodes in the
      * expression tree.
      */
-    public ExpressionTree(Node root) {
+    public ExpressionTree(quotedNode root) {
         this.root = root;
         infixEval = new infixEvaluator();
     }
 
+    public ExpressionTree(Node root) {
+    }
+    
     public ExpressionTree() {
         this.root = null;
         infixEval = new infixEvaluator();
@@ -61,13 +66,75 @@ public class ExpressionTree {
      * */
     public void buildTree(String expr) {
 		in = new Scanner(expr);
-    	root = readTree();
+    	root = new quotedNode(readTree());
     }
-
+    
     public Node readTree() {
 		return null;
 	}
     
+    //return height of the tree.
+	public int getHeight() {
+		return height(root);
+	}
+	
+	private int height(Node head) {
+	    if (head == null) {
+	        return 0;
+	    } else {
+	        return 1 + Math.max(height(head.getLeft()), height(head.getRight()));
+	    }
+	}
+    
+	private static void printIndentForLevel(int level){
+	    for (int i = (int) (Math.pow(2,level-1)); i >0; i--) {
+	        System.out.print(" ");
+	    }
+	}
+
+	/**
+	 * pass head node in list and height of the tree 
+	 * @param levelNodes
+	 * @param level
+	 */
+	private void printTree(List<Node> levelNodes, int level) {
+
+	    List<Node> nodes = new ArrayList<Node>();
+
+	    //indentation for first node in given level
+	    printIndentForLevel(level);
+
+	    for (Node treeNode : levelNodes) {
+
+	        //print node data
+	        //System.out.print(treeNode == null?" ":treeNode.getVal());
+	        if(treeNode == null)
+	        	System.out.print(" ");
+	        else
+	        	treeNode.display(level);
+	        //spacing between nodes
+	        //printSpacingBetweenNodes(level);
+
+	        //if its not a leaf node
+	        if(level>1){
+	            nodes.add(treeNode == null? null:treeNode.getLeft());
+	            nodes.add(treeNode == null? null:treeNode.getRight());
+	        }
+	    }
+	    System.out.println();
+
+	    if(level>1){        
+	        printTree(nodes, level-1);
+	    }
+	}
+
+	public void levelPrint() {
+		List<Node> list = new ArrayList<Node>();
+		list.add(root);
+		System.out.println("--------------------------------------------");
+		printTree(list, getHeight());
+	}
+	
     /** Accepts a @a visitor. */
     public double accept() {
 		root.accept(infixEval);

@@ -12,7 +12,11 @@ public interface Node {
 
 	void addRight(Node r);
 	
+	void display(int level);	//level is an extrinsic state of a node (concerned with flyWeight)
+	
+	String getGlyf();
+	
 	//accepts the visitor to implement specialized operation
 	public Double accept(Evaluator e);
-
+	
 }

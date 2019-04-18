@@ -3,13 +3,19 @@ package exprCalc;
 public class Operator implements Node {
 	Character op;
 	Node left, right;
-
+	String glyf;
+	
 	public String getVal() {
 		return Character.toString(op);
 	}
 
+	public String getGlyf() {
+		return glyf;
+	}
+
 	public void setVal(Character ch) {
 		op = ch;
+		glyf = Character.toString(ch);
 	}
 
 	//acts as router to select appropriate visitor method.
@@ -33,20 +39,10 @@ public class Operator implements Node {
 		return result;
 	}
 	
-	//inorder traversal is used to print the operator.
-//	public void display() {
-//		if(left!=null)
-//			left.display();
-//
-//		System.out.print(op);
-//		
-//		if(right!=null)
-//			right.display();
-//	}
-
 	//operator constructor with only operator mentioned.
 	public Operator(Character c) {
 		op = c;
+		glyf = Character.toString(c);
 		left = right = null;
 	}
 
@@ -73,6 +69,24 @@ public class Operator implements Node {
 	public void addRight(Node r) {
 		right = r;
 	}
-}
 
+	//used for level wise tree printing.
+	//calculates spacing between nodes based on current level of the node.
+	//Used as position locator for flyWeight pattern.
+	private void printSpacingBetweenNodes(int level){
+	    //spacing between nodes
+	    for (int i = (int) ((Math.pow(2,level-1))*2)-1; i >0; i--) {
+	        System.out.print(" ");
+	    }
+	}
+
+	//Glyf is intrinsic state
+	//level is extrinsic state
+	//for the flyWeight pattern.
+	@Override
+	public void display(int level) {
+		System.out.print(glyf);
+		printSpacingBetweenNodes(level);
+	}
+}
 

@@ -53,11 +53,12 @@ public class frontEnd {
 		
 		frmExpressionEvaluator = new JFrame();
 		frmExpressionEvaluator.setTitle("Expression Evaluator");
-		frmExpressionEvaluator.setBounds(100, 100, 250, 417);
+		frmExpressionEvaluator.setBounds(100, 100, 250, 495);
 		frmExpressionEvaluator.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmExpressionEvaluator.getContentPane().setLayout(null);
 		
 		input = new JTextField();
+		input.setEditable(false);
 		input.setBounds(23, 34, 197, 43);
 		frmExpressionEvaluator.getContentPane().add(input);
 		input.setColumns(10);
@@ -294,6 +295,12 @@ public class frontEnd {
 		frmExpressionEvaluator.getContentPane().add(postorder);
 		
 		JButton display = new JButton("display");
+		display.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				input.setText("Displayed on commandline.");
+				tree.levelPrint();
+			}
+		});
 		display.setBounds(136, 338, 84, 25);
 		frmExpressionEvaluator.getContentPane().add(display);
 		
@@ -306,5 +313,15 @@ public class frontEnd {
 		});
 		build.setBounds(79, 269, 71, 25);
 		frmExpressionEvaluator.getContentPane().add(build);
+		
+		JButton clear = new JButton("clear");
+		clear.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				input.setText("");
+				mydb.setExpr("");
+			}
+		});
+		clear.setBounds(23, 373, 84, 25);
+		frmExpressionEvaluator.getContentPane().add(clear);
 	}
 }

@@ -1,19 +1,20 @@
 package exprCalc;
 
 public class quotedNode extends nodeDecorator{
-
+	private String glyf;
+	
 	public quotedNode(Node newNode) {
 		super(newNode);
+		glyf = "'" + newNode.getVal() + "'";
 	}
 
 	@Override
 	public String getVal() {
-		return "'" + tempNode.getVal() + "'";
+		return glyf;
 	}
 
 	@Override
-	public Double accept(Evaluator e) {
-		// TODO Auto-generated method stub
-		return null;
+	public String getGlyf() {
+		return glyf;
 	}
 }
