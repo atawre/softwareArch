@@ -1,8 +1,9 @@
-composite
-iterator
-bridge
-visitor
-singleton
-decorator
-template method
-MVC
+composite	- Node/Leaf/Operator
+iterator	- in/pre/post order
+bridge		- ExpressionTree
+visitor		- Evaluator/infixEvaluator
+singleton	- ModelDb
+decorator	- quotedNode, nodeDecorator
+template method	- buildTree
+flyWeight	- display(int level) used across composite hierarchy.
+MVC		- frontEnd/ModelDb/Whole of the project
