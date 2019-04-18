@@ -251,7 +251,7 @@ public class frontEnd {
 		JButton inorder = new JButton("inorder");
 		inorder.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Iterator in = new inOrder(tree.root);
+				Iterator in = new inOrder(tree.getRoot());
 				String str = "";
 				while(in.hasNext()) {
 					str += " " + in.next().getVal();
@@ -265,7 +265,7 @@ public class frontEnd {
 		JButton preorder = new JButton("preorder");
 		preorder.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Iterator in = new preOrder(tree.root);
+				Iterator in = new preOrder(tree.getRoot());
 				String str = "";
 				while(in.hasNext()) {
 					str += " " + in.next().getVal();
@@ -281,7 +281,7 @@ public class frontEnd {
 
 		postorder.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Iterator in = new postOrder(tree.root);
+				Iterator in = new postOrder(tree.getRoot());
 				String str = "";
 				while(in.hasNext()) {
 					str += " " + in.next().getVal();

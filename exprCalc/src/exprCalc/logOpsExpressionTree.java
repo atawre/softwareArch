@@ -72,15 +72,41 @@ public class logOpsExpressionTree extends ExpressionTree {
         System.out.println("finished accept() call");
 		return infixEval.getResult();
     }
-
-    public void buildTree(String expr) {
-        System.out.println("starting buildTree call");    	
-		in = new Scanner(expr);
-    	root = readTree();
-    	//iFactory = new IteratorFactory(this);
-        System.out.println("finished buildTree call");
-    }
     
+    /*
+     * This method logs operation calls.
+     */
+    public Node readTree() {
+    	System.out.println("Calling readTree");
+        Node n = null;
+        // get next non-whitespace char
+        char ch = in.findInLine("(\\S)").charAt(0);
+        if ((ch >= '0') && (ch <='9')) {
+        	// leaf node
+        	System.out.println("Creating leaf");
+        	Leaf l = new Leaf(Character.getNumericValue(ch));
+        	n = l;
+        } else if (ch == '(') {
+        	Operator o = new Operator(' ');
+            // an expression
+        	System.out.println("Calling addLeft");        	
+            o.addLeft(readTree());
+        	System.out.println("Calling setVal");
+            o.setVal(in.findInLine("(\\S)").charAt(0));
+        	System.out.println("Calling adddRight");
+            o.addRight(readTree());
+            ch = in.findInLine("(\\S)").charAt(0);
+            if (ch != ')') {
+                System.out.print("EXPECTED ) - } ASSUMED...");
+            }
+            n = o;
+        } else {
+            System.out.print("EXPECTED ( - CAN'T PARSE");
+            System.exit(1);
+        }
+        return n;
+    }
+
     /** 
      * Returns the designated iterator after requesting it from
      * factory method. 

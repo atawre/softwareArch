@@ -56,36 +56,18 @@ public class ExpressionTree {
         return new ExpressionTree(root.getRight());
     }
 
+    /** This is a template method
+     * 	Individual tree specific implementation is defined in concrete Expression trees.
+     * */
     public void buildTree(String expr) {
-    	
+		in = new Scanner(expr);
+    	root = readTree();
     }
 
-    protected Node readTree() {
-        Node n = null;
-        // get next non-whitespace char
-        char ch = in.findInLine("(\\S)").charAt(0);
-        if ((ch >= '0') && (ch <='9')) {
-        	// leaf node
-        	Leaf l = new Leaf(Character.getNumericValue(ch));
-        	n = l;
-        } else if (ch == '(') {
-        	Operator o = new Operator(' ');
-            // an expression
-            o.addLeft(readTree());
-            o.setVal(in.findInLine("(\\S)").charAt(0));
-            o.addRight(readTree());
-            ch = in.findInLine("(\\S)").charAt(0);
-            if (ch != ')') {
-                System.out.print("EXPECTED ) - } ASSUMED...");
-            }
-            n = o;
-        } else {
-            System.out.print("EXPECTED ( - CAN'T PARSE");
-            System.exit(1);
-        }
-        return n;
-    }
-
+    public Node readTree() {
+		return null;
+	}
+    
     /** Accepts a @a visitor. */
     public double accept() {
 		root.accept(infixEval);
