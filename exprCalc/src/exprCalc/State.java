@@ -16,4 +16,8 @@ public abstract class State {
 	public abstract double evaluate(TreeOps treeOps);
 
 	public abstract String display(TreeOps treeOps, String format) ;
+
+	public void quit(TreeOps treeOps) {
+		System.exit(0);
+	}
 }

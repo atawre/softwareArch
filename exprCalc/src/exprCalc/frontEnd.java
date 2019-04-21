@@ -52,7 +52,7 @@ public class frontEnd {
 		
 		frmExpressionEvaluator = new JFrame();
 		frmExpressionEvaluator.setTitle("Expression Evaluator");
-		frmExpressionEvaluator.setBounds(100, 100, 250, 495);
+		frmExpressionEvaluator.setBounds(100, 100, 250, 453);
 		frmExpressionEvaluator.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmExpressionEvaluator.getContentPane().setLayout(null);
 		
@@ -309,5 +309,14 @@ public class frontEnd {
 		});
 		clear.setBounds(23, 373, 84, 25);
 		frmExpressionEvaluator.getContentPane().add(clear);
+		
+		JButton quit = new JButton("quit");
+		quit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				treeOps.quit();
+			}
+		});
+		quit.setBounds(124, 373, 94, 25);
+		frmExpressionEvaluator.getContentPane().add(quit);
 	}
 }

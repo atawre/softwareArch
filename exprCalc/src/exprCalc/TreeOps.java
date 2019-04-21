@@ -63,8 +63,8 @@ public class TreeOps {
 		return state.display(this, format);
 	}
 
-	public void noop() {
-		// TODO Auto-generated method stub
+	public void quit() {
+		state.quit(this);
 	}
 }
 
