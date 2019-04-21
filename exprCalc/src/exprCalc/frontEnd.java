@@ -17,7 +17,7 @@ public class frontEnd {
 
 	private JFrame frmExpressionEvaluator;
 	private JTextField input;
-	private logOpsExpressionTree tree;
+	private TreeOps treeOps;
 	private ModelDb mydb;
 
 	/**
@@ -47,9 +47,8 @@ public class frontEnd {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		//init the expression tree
-		tree = new logOpsExpressionTree();
 		mydb = ModelDb.getInstance();
+		treeOps = new TreeOps();
 		
 		frmExpressionEvaluator = new JFrame();
 		frmExpressionEvaluator.setTitle("Expression Evaluator");
@@ -243,7 +242,8 @@ public class frontEnd {
 		JButton eval = new JButton("Eval");
 		eval.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				input.setText(Double.toString(tree.accept()));
+				//input.setText(Double.toString(tree.accept()));
+				input.setText(Double.toString(treeOps.evaluate()));
 			}
 		});
 		eval.setBounds(158, 269, 62, 25);
@@ -252,12 +252,7 @@ public class frontEnd {
 		JButton inorder = new JButton("inorder");
 		inorder.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Iterator in = new inOrder(tree.getRoot());
-				String str = "";
-				while(in.hasNext()) {
-					str += " " + in.next().getVal();
-				}
-				input.setText(str);
+				input.setText(treeOps.display("inorder"));
 			}
 		});
 		inorder.setBounds(23, 301, 94, 25);
@@ -266,12 +261,7 @@ public class frontEnd {
 		JButton preorder = new JButton("preorder");
 		preorder.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Iterator in = new preOrder(tree.getRoot());
-				String str = "";
-				while(in.hasNext()) {
-					str += " " + in.next().getVal();
-				}
-				input.setText(str);
+				input.setText(treeOps.display("preorder"));
 			}
 		});
 
@@ -282,12 +272,7 @@ public class frontEnd {
 
 		postorder.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Iterator in = new postOrder(tree.getRoot());
-				String str = "";
-				while(in.hasNext()) {
-					str += " " + in.next().getVal();
-				}
-				input.setText(str);
+				input.setText(treeOps.display("postorder"));
 			}
 		});
 
@@ -297,8 +282,7 @@ public class frontEnd {
 		JButton display = new JButton("display");
 		display.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				input.setText("Displayed on commandline.");
-				tree.levelPrint();
+				input.setText(treeOps.display("levelorder"));
 			}
 		});
 		display.setBounds(136, 338, 84, 25);
@@ -307,7 +291,8 @@ public class frontEnd {
 		JButton build = new JButton("Build");
 		build.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				tree.buildTree(mydb.getExpr());
+				mydb.setExpr(input.getText());
+				treeOps.build();
 				input.setText("done");
 			}
 		});
@@ -319,6 +304,7 @@ public class frontEnd {
 			public void actionPerformed(ActionEvent arg0) {
 				input.setText("");
 				mydb.setExpr("");
+				treeOps.setState(new UnInitializedState());
 			}
 		});
 		clear.setBounds(23, 373, 84, 25);
