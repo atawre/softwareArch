@@ -12,12 +12,14 @@ public class TreeOps {
     private State state;
 	private ModelDb mydb;
     private ExpressionTree tree;
+    private long programStart;
 
     /** Ctor */
     public TreeOps() {
         state = new UnInitializedState();
-        tree = new logOpsExpressionTree();		//default tree for treeOps.
         mydb = ModelDb.getInstance();
+        programStart = System.currentTimeMillis();
+        tree = new logOpsExpressionTree(programStart);		//default tree for treeOps.
     }
 
     /**
