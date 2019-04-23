@@ -12,11 +12,11 @@ import java.util.Scanner;
  *        all the operator and operand nodes in the expression tree.
  */
 public class ExpressionTree {
+    /** Base implementor. */
     protected quotedNode root = null;
     protected IteratorFactory iFactory = null;
 	protected infixEvaluator infixEval = null;
     protected Scanner in = null;
-	protected Logger logger;
 	
     /**
      * Ctor that takes a @a Node * that contains all the nodes in the
@@ -86,8 +86,61 @@ public class ExpressionTree {
 	    }
 	}
     
+	private static void printIndentForLevel(int level){
+	    for (int i = (int) (Math.pow(2,level-1)); i >0; i--) {
+	        System.out.print(" ");
+	    }
+	}
 
-	//public abstract void levelPrint();
+	private void printSpacingBetweenNodes(int level){
+	    //spacing between nodes
+	    for (int i = (int) ((Math.pow(2,level-1))*2)-1; i >0; i--) {
+	        System.out.print(" ");
+	    }
+	}
+
+	
+	/**
+	 * pass head node in list and height of the tree 
+	 * @param levelNodes
+	 * @param level
+	 */
+	private void printTree(List<Node> levelNodes, int level) {
+
+	    List<Node> nodes = new ArrayList<Node>();
+
+	    //indentation for first node in given level
+	    printIndentForLevel(level);
+
+	    for (Node treeNode : levelNodes) {
+
+	        //print node data
+	        //System.out.print(treeNode == null?" ":treeNode.getVal());
+	        if(treeNode == null) {
+	        	System.out.print(" ");
+	        	printSpacingBetweenNodes(level);
+	        }else {
+	        	treeNode.display(level);
+	        }
+	        //if its not a leaf node
+	        if(level>1){
+	            nodes.add(treeNode == null? null:treeNode.getLeft());
+	            nodes.add(treeNode == null? null:treeNode.getRight());
+	        }
+	    }
+	    System.out.println();
+
+	    if(level>1){        
+	        printTree(nodes, level-1);
+	    }
+	}
+
+	public void levelPrint() {
+		List<Node> list = new ArrayList<Node>();
+		list.add(root);
+		System.out.println("--------------------------------------------");
+		printTree(list, getHeight());
+	}
 	
     /** Accepts a @a visitor. */
     public double accept() {
@@ -102,9 +155,4 @@ public class ExpressionTree {
     public Iterator makeIterator(String traversalOrderRequest) {
     	return iFactory.makeIterator(traversalOrderRequest);
     }
-
-	public void levelPrint() {
-		// TODO Auto-generated method stub
-	}
 }
-

@@ -1,5 +1,7 @@
 package exprCalc;
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -13,74 +15,75 @@ import java.util.Scanner;
 
 public class logOpsExpressionTree extends ExpressionTree {
     /**
-     * Timing information for the program.
-     */
-	ElapsedTimeObject eTime, cTime;
-
-    /**
      * Ctor that takes a @a Node * that contains all the nodes in the
      * expression tree.
      */
     public logOpsExpressionTree(Node root) {
         super(root);
-		eTime = new ElapsedTimeMilliSeconds(System.currentTimeMillis());
+		//setup chain of loggers 
+		logger = new TimeStampLogger(new ElapsedTimeMilliSeconds(System.currentTimeMillis()));
+		logger.setNextLogger(new ConsoleLogger());
     }
 
     public logOpsExpressionTree() {
     	super();
-		eTime = new ElapsedTimeMilliSeconds(System.currentTimeMillis());
+		//setup chain of loggers 
+		logger = new TimeStampLogger(new ElapsedTimeMilliSeconds(System.currentTimeMillis()));
+		logger.setNextLogger(new ConsoleLogger());
 	}
 
 	public logOpsExpressionTree(long programStart) {
     	super();
-		eTime = new ElapsedTimeMilliSeconds(programStart);
+		//setup chain of loggers 
+		logger = new TimeStampLogger(new ElapsedTimeMilliSeconds(programStart));
+		logger.setNextLogger(new ConsoleLogger());
 	}
 
 	/** Returns whether a the tree is null. */
     public boolean isNull() {
-        System.out.println(eTime.clone().getTime() + " : starting isNull() call");
+        logger.write("starting isNull() call");
         boolean temp = super.isNull();
-        System.out.println(eTime.clone().getTime() + " : finished isNull() call");
+        logger.write("finished isNull() call");
         return temp;
     }
 
     /** Returns root. */
     public Node getRoot() {
-        System.out.println(eTime.clone().getTime() + " : starting getRoot() call");
+        logger.write("starting getRoot() call");
         Node temp = root;
-        System.out.println(eTime.clone().getTime() + " : finished getRoot() call");
+        logger.write("finished getRoot() call");
         return temp;
     }
 
     /** Returns the root item. */
     public int item() throws Exception {
-        System.out.println(eTime.clone().getTime() + " : starting left() call");
+        logger.write("starting left() call");
         int temp = super.item();
-        System.out.println(eTime.clone().getTime() + " : finished left() call");
+        logger.write("finished left() call");
         return temp;
     }
 
     /** Returns the tree's left node. */
     public ExpressionTree left() {
-        System.out.println(eTime.clone().getTime() + " : starting left() call");
+        logger.write("starting left() call");
         ExpressionTree temp = super.left();
-        System.out.println(eTime.clone().getTime() + " : finished right() call");
+        logger.write("finishSystem.out.printed right() call");
         return temp;
     }
 
     /** Returns the tree's right node. */
     public ExpressionTree right() {
-        System.out.println(eTime.clone().getTime() + " : starting right() call");
+        logger.write("starting right() call");
         ExpressionTree temp = super.right();
-        System.out.println(eTime.clone().getTime() + " : finished right() call");
+        logger.write("finished right() call");
         return temp;
     }
 
     /** Accepts a @a visitor. */
     public double accept() {
-        System.out.println(eTime.clone().getTime() + " : starting accept() call");
+        logger.write("starting accept() call");
 		root.accept(infixEval);
-        System.out.println(eTime.clone().getTime() + " : finished accept() call");
+        logger.write("finished accept() call");
 		return infixEval.getResult();
     }
     
@@ -88,44 +91,102 @@ public class logOpsExpressionTree extends ExpressionTree {
      * This method logs operation calls.
      */
     public Node readTree() {
-    	System.out.println(eTime.clone().getTime() + " : Calling readTree");
+    	logger.write("Calling readTree");
         Node n = null;
         // get next non-whitespace char
         char ch = in.findInLine("(\\S)").charAt(0);
         if ((ch >= '0') && (ch <='9')) {
         	// leaf node
-        	System.out.println(eTime.clone().getTime() + " : Creating leaf");
+        	logger.write("Creating leaf");
         	Leaf l = new Leaf(Character.getNumericValue(ch));
         	n = l;
         } else if (ch == '(') {
         	Operator o = new Operator(' ');
             // an expression
-        	System.out.println(eTime.clone().getTime() + " : Calling addLeft");
+        	logger.write("Calling addLeft");
             o.addLeft(readTree());
-        	System.out.println(eTime.clone().getTime() +  " : Calling setVal");
+        	logger.write("Calling setVal");
             o.setVal(in.findInLine("(\\S)").charAt(0));
-        	System.out.println(eTime.clone().getTime() + " : Calling adddRight");
+        	logger.write("Calling adddRight");
             o.addRight(readTree());
             ch = in.findInLine("(\\S)").charAt(0);
             if (ch != ')') {
-                System.out.print("EXPECTED ) - } ASSUMED...");
+                logger.write("EXPECTED ) - } ASSUMED...");
             }
             n = o;
         } else {
-            System.out.print("EXPECTED ( - CAN'T PARSE");
+        	logger.write("EXPECTED ( - CAN'T PARSE");
             System.exit(1);
         }
         return n;
     }
 
+    
+	private void printIndentForLevel(int level){
+	    for (int i = (int) (Math.pow(2,level-1)); i >0; i--) {
+	        logger.getNextLogger().write(" ");
+	    }
+	}
+
+	private void printSpacingBetweenNodes(int level){
+	    //spacing between nodes
+	    for (int i = (int) ((Math.pow(2,level-1))*2)-1; i >0; i--) {
+	        logger.getNextLogger().write(" ");
+	    }
+	}
+	
+	/**
+	 * pass head node in list and height of the tree 
+	 * @param levelNodes
+	 * @param level
+	 */
+	private void printTree(List<Node> levelNodes, int level) {
+
+	    List<Node> nodes = new ArrayList<Node>();
+
+	    //indentation for first node in given level
+	    printIndentForLevel(level);
+
+	    for (Node treeNode : levelNodes) {
+
+	        //print node data
+	        //System.out.print(treeNode == null?" ":treeNode.getVal());
+	        if(treeNode == null) {
+	            logger.getNextLogger().write(" ");
+	        	printSpacingBetweenNodes(level);
+	        }else {
+	        	treeNode.display(level);
+	        }
+	        //if its not a leaf node
+	        if(level>1){
+	            nodes.add(treeNode == null? null:treeNode.getLeft());
+	            nodes.add(treeNode == null? null:treeNode.getRight());
+	        }
+	    }
+        logger.getNextLogger().write("\n");
+	    if(level>1){
+	        printTree(nodes, level-1);
+	    }
+	}
+
+	@Override
+	public void levelPrint() {
+		List<Node> list = new ArrayList<Node>();
+		list.add(root);
+		logger.getNextLogger().write("--------------------------------------------\n");
+		printTree(list, getHeight());
+		logger.getNextLogger().write("--------------------------------------------\n");
+	}
+    
     /** 
      * Returns the designated iterator after requesting it from
      * factory method. 
      */
     public Iterator makeIterator(String traversalOrder) {
-        System.out.println(eTime.clone().getTime() + " : starting iterator() call");
+        logger.write("starting iterator() call");
         Iterator temp = iFactory.makeIterator(traversalOrder);
-        System.out.println(eTime.clone().getTime() + " : finished iterator() call");
+        logger.write("finished iterator() call");
         return temp;
     }
+
 }

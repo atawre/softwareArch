@@ -1,7 +1,7 @@
 package exprCalc;
 import java.util.concurrent.TimeUnit;
 
-public class ElapsedTimeMilliSeconds extends ElapsedTimeObject{
+public class ElapsedTimeMilliSeconds extends ElapsedTime{
 	String formatedTime;
 	
 	public ElapsedTimeMilliSeconds(Long time) {
