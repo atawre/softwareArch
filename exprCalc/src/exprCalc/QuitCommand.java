@@ -10,7 +10,8 @@ public class QuitCommand extends UserCommand {
 
     /** Quit the input dispatching loop. 
      * @return */
-    public UserCommand execute() {
+    public String execute() {
+    	System.exit(0);
 		return null;
         //InputDispatcher.instance().endInputDispatching();
     }

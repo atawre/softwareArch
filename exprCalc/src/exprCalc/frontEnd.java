@@ -17,8 +17,8 @@ public class frontEnd {
 
 	private JFrame frmExpressionEvaluator;
 	private JTextField input;
-	private TreeOps treeOps;
 	private ModelDb mydb;
+	private UserCommandFactory cFactory;
 
 	/**
 	 * Launch the application.
@@ -48,7 +48,7 @@ public class frontEnd {
 	 */
 	private void initialize() {
 		mydb = ModelDb.getInstance();
-		treeOps = new TreeOps();
+		cFactory = new UserCommandFactory(new TreeOps());
 		
 		frmExpressionEvaluator = new JFrame();
 		frmExpressionEvaluator.setTitle("Expression Evaluator");
@@ -243,7 +243,13 @@ public class frontEnd {
 		eval.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				//input.setText(Double.toString(tree.accept()));
-				input.setText(Double.toString(treeOps.evaluate()));
+				try {
+					UserCommand cmd = cFactory.makeUserCommand("eval");
+					input.setText(cmd.execute());
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		});
 		eval.setBounds(158, 269, 62, 25);
@@ -252,7 +258,13 @@ public class frontEnd {
 		JButton inorder = new JButton("inorder");
 		inorder.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				input.setText(treeOps.display("inorder"));
+				try {
+					UserCommand cmd = cFactory.makeUserCommand("inorder");
+					input.setText(cmd.execute());
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		});
 		inorder.setBounds(23, 301, 94, 25);
@@ -261,7 +273,12 @@ public class frontEnd {
 		JButton preorder = new JButton("preorder");
 		preorder.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				input.setText(treeOps.display("preorder"));
+				try {
+					UserCommand cmd = cFactory.makeUserCommand("preorder");
+					input.setText(cmd.execute());
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			}
 		});
 
@@ -272,7 +289,14 @@ public class frontEnd {
 
 		postorder.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				input.setText(treeOps.display("postorder"));
+				try {
+					UserCommand cmd = cFactory.makeUserCommand("postorder");
+					input.setText(cmd.execute());
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
 			}
 		});
 
@@ -282,7 +306,13 @@ public class frontEnd {
 		JButton display = new JButton("display");
 		display.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				input.setText(treeOps.display("levelorder"));
+				try {
+					UserCommand cmd = cFactory.makeUserCommand("display");
+					input.setText(cmd.execute());
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		});
 		display.setBounds(136, 338, 84, 25);
@@ -292,8 +322,14 @@ public class frontEnd {
 		build.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				mydb.setExpr(input.getText());
-				treeOps.build();
-				input.setText("done");
+				
+				try {
+					UserCommand cmd = cFactory.makeUserCommand("build");
+					cmd.execute();
+					input.setText("done");
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			}
 		});
 		build.setBounds(79, 269, 71, 25);
@@ -302,9 +338,12 @@ public class frontEnd {
 		JButton clear = new JButton("clear");
 		clear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				input.setText("");
-				mydb.setExpr("");
-				treeOps.setState(new UnInitializedState());
+				try {
+					UserCommand cmd = cFactory.makeUserCommand("clear");
+					input.setText(cmd.execute());
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			}
 		});
 		clear.setBounds(23, 373, 84, 25);
@@ -313,10 +352,17 @@ public class frontEnd {
 		JButton quit = new JButton("quit");
 		quit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				treeOps.quit();
+				UserCommand cmd;
+				try {
+					cmd = cFactory.makeUserCommand("quit");
+					cmd.execute();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			}
 		});
 		quit.setBounds(124, 373, 94, 25);
 		frmExpressionEvaluator.getContentPane().add(quit);
 	}
 }
+

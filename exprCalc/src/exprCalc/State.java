@@ -11,7 +11,7 @@ import java.util.HashMap;
 
 public abstract class State {
 	
-    abstract void build(TreeOps context, String string);
+    public abstract void build(TreeOps context, String string);
     
 	public abstract double evaluate(TreeOps treeOps);
 
@@ -20,4 +20,5 @@ public abstract class State {
 	public void quit(TreeOps treeOps) {
 		System.exit(0);
 	}
+	public abstract void clear(TreeOps context);
 }

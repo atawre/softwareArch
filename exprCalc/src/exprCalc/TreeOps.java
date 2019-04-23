@@ -68,5 +68,12 @@ public class TreeOps {
 	public void quit() {
 		state.quit(this);
 	}
+
+	public void clear() {
+		// TODO Auto-generated method stub
+		state.clear(this);
+		mydb.setExpr("");
+		tree = new logOpsExpressionTree(programStart);
+	}
 }
 

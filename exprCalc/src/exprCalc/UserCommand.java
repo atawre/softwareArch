@@ -16,6 +16,6 @@ public abstract class UserCommand {
 	
     /** Runs the command. 
      * @return */
-    abstract UserCommand execute() throws Exception;
+    abstract String execute() throws Exception;
 
 }

@@ -3,7 +3,7 @@ package exprCalc;
 public class InitializedState extends State{
 
 	@Override
-	void build(TreeOps context, String expr) {
+	public void build(TreeOps context, String expr) {
 		ExpressionTree tree = context.getTree();
 		tree.buildTree(expr);
 	}
@@ -41,5 +41,10 @@ public class InitializedState extends State{
 		while(in.hasNext())
 			str += " " + in.next().getVal();
 		return str;
+	}
+
+	@Override
+	public void clear(TreeOps context) {
+		context.setState(new UnInitializedState());
 	}
 }

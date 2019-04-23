@@ -3,7 +3,7 @@ package exprCalc;
 public class UnInitializedState extends State{
 
 	@Override
-	void build(TreeOps context, String expr) {
+	public void build(TreeOps context, String expr) {
 		ExpressionTree tree = context.getTree();
 		tree.buildTree(expr);
 		context.setState(new InitializedState());
@@ -18,5 +18,11 @@ public class UnInitializedState extends State{
 	@Override
 	public String display(TreeOps treeOps, String format) {
 		return("Invalid operation.");
+	}
+
+	@Override
+	public void clear(TreeOps context) {
+		// TODO Auto-generated method stub
+		
 	}
 }

@@ -24,44 +24,23 @@ public class UserCommandFactory {
         new HashMap<String, UserCommand>();
 
     /** Ctor */
-    UserCommandFactory(final TreeOps treeOps) {   	
+    UserCommandFactory(TreeOps treeOps) {   	
     	/** Initialize the TreeOps member. */
-        this.treeOps = treeOps;
-   		
-    	/** 
-         * An "eval" string maps to a command object that creates
-         * an @a EvalCommand implementation.
-         */
+    	this.treeOps = treeOps;
+        commandMap.put("clear", new ClearCommand(treeOps));
+        commandMap.put("quit", new QuitCommand(treeOps));
         commandMap.put("eval", new EvalCommand(treeOps));
+        commandMap.put("build", new BuildCommand(treeOps));
+        commandMap.put("display", new DisplayCommand(treeOps, ""));
+        commandMap.put("inorder", new DisplayCommand(treeOps, "inorder"));
+        commandMap.put("preorder", new DisplayCommand(treeOps, "preorder"));
+        commandMap.put("postorder", new DisplayCommand(treeOps, "postorder"));
     }
 
-    /** 
-     * Create a new @a UserCommand object based on the caller's
-     * designated @a inputString.
-     * @throws Exception 
-     */
-    public UserCommand makeUserCommand(String inputString) throws Exception {
-        String parameters = "";
-        String commandRequest = inputString;
+    public UserCommand makeUserCommand(String commandRequest) throws Exception {
 
-        int spacepos = inputString.indexOf(' ');
-        if (spacepos >= 0) {
-            parameters = inputString.substring(spacepos + 1);
-            commandRequest = inputString.substring(0, 
-                                                   spacepos);
-        }
         /** Try to find the pre-allocated factory command. */
-        UserCommand command = 
-            commandMap.get(commandRequest);
+        return commandMap.get(commandRequest);
 
-        if(command != null)
-            /** If we find it then execute it. */
-            return command.execute();
-        else
-            /** 
-             * Otherwise, the user gave an unknown request, so we'll
-             * quit.
-             */
-            return new QuitCommand(treeOps);
     }
 }

@@ -7,7 +7,7 @@ public class BuildCommand extends UserCommand {
 
     /** Evaluate the expression tree. 
      * @return */
-    public UserCommand execute() throws Exception {
+    public String execute() throws Exception {
         treeOps.build();
 		return null;
     }

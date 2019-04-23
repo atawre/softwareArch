@@ -11,8 +11,7 @@ public class DisplayCommand extends UserCommand {
 
     /** Evaluate the expression tree. 
      * @return */
-    public UserCommand execute() throws Exception {
-        treeOps.display(format);
-		return null;
+    public String execute() throws Exception {
+        return treeOps.display(format);
     }
 }
