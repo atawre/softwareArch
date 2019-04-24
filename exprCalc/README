@@ -1,0 +1,19 @@
+How to run?
+
+java -jar app.jar
+
+How to run Docker image?
+
+cd app
+./build.sh
+./run.sh
+
+
+Restrictions ?
+
+Only single digits should be entered.
+Input expression should be fully paranthesized.
+Expression can any length you want.
+
+Where to find class diagrams?
+diagrams folder :)
